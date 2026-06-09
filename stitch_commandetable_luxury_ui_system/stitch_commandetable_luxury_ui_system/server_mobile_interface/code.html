@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@100..900&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0D0D0D;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            background-attachment: fixed;
+        }
+        .grain-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#adabab",
+                        "on-primary-container": "#503d00",
+                        "outline": "#99907e",
+                        "surface-container-high": "#292a27",
+                        "surface-container-highest": "#333532",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c19",
+                        "inverse-on-surface": "#2f312e",
+                        "surface-variant": "#333532",
+                        "primary-fixed-dim": "#e6c364",
+                        "background": "#121411",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-container": "#c9a84c",
+                        "secondary-container": "#8e1c1c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#403f3f",
+                        "secondary": "#ffb3ac",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-secondary": "#680007",
+                        "error-container": "#93000a",
+                        "primary": "#e6c364",
+                        "on-primary": "#3d2e00",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary-fixed": "#ffe08f",
+                        "on-secondary-fixed-variant": "#8a1a1a",
+                        "surface-dim": "#121411",
+                        "on-surface-variant": "#d0c5b2",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-secondary-container": "#ff9e96",
+                        "surface-bright": "#383a36",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#e6c364",
+                        "on-surface": "#e3e3de",
+                        "inverse-surface": "#e3e3de",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0d0f0c",
+                        "secondary-fixed": "#ffdad6",
+                        "surface-container": "#1e201d",
+                        "tertiary": "#c9c6c6",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#121411",
+                        "on-error": "#690005",
+                        "on-background": "#e3e3de",
+                        "outline-variant": "#4d4637",
+                        "inverse-primary": "#755b00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "section-gap-mobile": "48px",
+                        "container-margin": "24px",
+                        "base": "8px",
+                        "section-gap-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "price-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "price-lg": ["EB Garamond"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-background dark:bg-background border-b border-outline-variant shadow-sm">
+<span class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary tracking-tighter italic">L'ÉLITE</span>
+<div class="flex items-center gap-4">
+<button class="relative scale-95 active:opacity-80 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="w-8 h-8 rounded-full border border-primary/30 overflow-hidden">
+<img alt="Chef" class="w-full h-full object-cover" data-alt="A professional headshot of a head chef wearing a crisp white double-breasted culinary jacket with gold buttons, looking confident. The background is a softly blurred high-end kitchen with stainless steel accents and warm, ambient lighting. The overall mood is sophisticated, reflecting a modern luxury culinary environment with a nocturnal gold and black color palette." src="https://lh3.googleusercontent.com/aida/AP1WRLsuQydlw5vdE2rIMz5tDkXkV8TpYCSeJiX4u32Vh3u--fC-EPXIVGB2n4e4B0jXf_SlpJhnWs--nose8-IPgjYWdLdNcurErxYwe15RgjHbqZiP-chqfIA9r7XogqMiNoayL_vLODZcr0ceX6PA3lG_UusSjZCBVsgE9gNFX5xvBNB7WqKcJBCNj_khUSrCHl2WHnjUtGaoPcj63ZwjEKTVpm-TgpIuhQUeQamJvbHc8SChbn431tlLX_Q"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-4 max-w-md mx-auto min-h-screen">
+<!-- Header & Stats -->
+<header class="mb-8">
+<h1 class="font-headline-sm text-headline-sm-mobile text-on-surface mb-2">Service en cours</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Zone : Salon Principal</p>
+</header>
+<!-- Segmented Control (Tabs) -->
+<div class="flex bg-surface-container-low rounded-lg p-1 mb-6 border border-outline-variant/30">
+<button class="flex-1 py-3 px-2 rounded-md font-label-md text-label-md text-primary bg-secondary-container/10 border-r-2 border-primary transition-all" id="tab-servir" onclick="switchTab('servir')">
+                À servir
+            </button>
+<button class="flex-1 py-3 px-2 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-primary relative transition-all" id="tab-appels" onclick="switchTab('appels')">
+                Appels
+                <span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+</button>
+<button class="flex-1 py-3 px-2 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" id="tab-toutes" onclick="switchTab('toutes')">
+                Toutes
+            </button>
+</div>
+<!-- Table List -->
+<div class="space-y-4" id="table-container">
+<!-- Table Item: Call Alert -->
+<div class="bg-surface-container-high rounded-xl p-5 border border-secondary/40 shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary mb-1 block">Table 12</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-label-md text-[12px] text-secondary uppercase tracking-widest">Appel Client</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-md text-price-md text-secondary block">02:45</span>
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Attente</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-[13px] border border-on-secondary-fixed-variant active:scale-95 transition-transform">
+                        Répondre à l'appel
+                    </button>
+</div>
+</div>
+<!-- Table Item: To Serve -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/50 hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface mb-1 block">Table 08</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Prêt à servir</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-md text-price-md text-primary-container block">05:12</span>
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">En cuisine</span>
+</div>
+</div>
+<div class="mb-4 space-y-1">
+<p class="text-on-surface-variant text-sm flex justify-between"><span>2x Homard Bleu</span> <span class="text-xs text-outline italic">Prêt</span></p>
+<p class="text-on-surface-variant text-sm flex justify-between"><span>1x Filet Rossini</span> <span class="text-xs text-outline italic">Prêt</span></p>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-lg bg-primary-container text-on-primary-container font-label-md text-[13px] active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+                        Marquer comme servie
+                    </button>
+</div>
+</div>
+<!-- Table Item: Occupied -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/30 opacity-70">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant mb-1 block">Table 04</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-sm">hourglass_empty</span>
+<span class="font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Dégustation</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-md text-price-md text-outline block">18:30</span>
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Temps total</span>
+</div>
+</div>
+</div>
+<!-- Table Item: New Call -->
+<div class="bg-surface-container-high rounded-xl p-5 border border-secondary/40 shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-headline-sm text-headline-sm text-primary mb-1 block">Table 21</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-label-md text-[12px] text-secondary uppercase tracking-widest">Addition demandée</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-md text-price-md text-secondary block">00:45</span>
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Attente</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-[13px] border border-on-secondary-fixed-variant active:scale-95 transition-transform">
+                        Répondre à l'appel
+                    </button>
+</div>
+</div>
+</div>
+<!-- Empty state placeholder for filtering (hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center" id="empty-state">
+<span class="material-symbols-outlined text-6xl text-outline-variant mb-4">restaurant_menu</span>
+<p class="font-headline-sm text-outline">Aucune tâche en attente</p>
+<p class="text-on-surface-variant text-sm mt-2">Le service est parfaitement fluide.</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-secondary-container dark:bg-secondary-container rounded-t-xl shadow-[0_-4px_24px_rgba(0,0,0,0.6)]">
+<button class="flex flex-col items-center justify-center text-primary-fixed font-bold scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-md text-label-md-mobile">Order</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<span class="font-label-md text-label-md-mobile">Tracking</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md-mobile">Profile</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md-mobile">Cart</span>
+</button>
+</nav>
+<script>
+        function switchTab(tab) {
+            const tabs = ['servir', 'appels', 'toutes'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (t === tab) {
+                    el.classList.add('bg-secondary-container/10', 'border-r-2', 'border-primary', 'text-primary');
+                    el.classList.remove('text-on-surface-variant');
+                } else {
+                    el.classList.remove('bg-secondary-container/10', 'border-r-2', 'border-primary', 'text-primary');
+                    el.classList.add('text-on-surface-variant');
+                }
+            });
+
+            // Simulate filtering logic
+            const container = document.getElementById('table-container');
+            const empty = document.getElementById('empty-state');
+            
+            // For demo purposes, we just toggle visibility of some items
+            if (tab === 'appels') {
+                // Show only red bordered cards
+                // (This is simplified for the demo)
+            }
+        }
+
+        // Add micro-interaction to buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const originalScale = btn.style.transform;
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = originalScale, 150);
+            });
+        });
+    </script>
+</body></html>

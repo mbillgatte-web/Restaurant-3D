@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&amp;family=Inter:wght@400;500;600&amp;family=EB+Garamond:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#adabab",
+                    "on-primary-container": "#503d00",
+                    "outline": "#99907e",
+                    "surface-container-high": "#292a27",
+                    "surface-container-highest": "#333532",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1a1c19",
+                    "inverse-on-surface": "#2f312e",
+                    "surface-variant": "#333532",
+                    "primary-fixed-dim": "#e6c364",
+                    "background": "#121411",
+                    "on-secondary-fixed": "#410003",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "primary-container": "#c9a84c",
+                    "secondary-container": "#8e1c1c",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-tertiary-container": "#403f3f",
+                    "secondary": "#ffb3ac",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "on-secondary": "#680007",
+                    "error-container": "#93000a",
+                    "primary": "#e6c364",
+                    "on-primary": "#3d2e00",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "primary-fixed": "#ffe08f",
+                    "on-secondary-fixed-variant": "#8a1a1a",
+                    "surface-dim": "#121411",
+                    "on-surface-variant": "#d0c5b2",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary-fixed-variant": "#584400",
+                    "on-secondary-container": "#ff9e96",
+                    "surface-bright": "#383a36",
+                    "on-tertiary": "#313030",
+                    "surface-tint": "#e6c364",
+                    "on-surface": "#e3e3de",
+                    "inverse-surface": "#e3e3de",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0d0f0c",
+                    "secondary-fixed": "#ffdad6",
+                    "surface-container": "#1e201d",
+                    "tertiary": "#c9c6c6",
+                    "on-primary-fixed": "#241a00",
+                    "surface": "#121411",
+                    "on-error": "#690005",
+                    "on-background": "#e3e3de",
+                    "outline-variant": "#4d4637",
+                    "inverse-primary": "#755b00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "section-gap-mobile": "48px",
+                    "container-margin": "24px",
+                    "base": "8px",
+                    "section-gap-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "label-md": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "price-md": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "price-lg": ["EB Garamond"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #0d0d0d;
+    overflow-x: hidden
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url(https://lh3.googleusercontent.com/aida/AP1WRLtlA0AmwJz533zY7v4asWWJs7uOAlUgmpQ5L5wzO1SBxRUW8pVKpMwKcP0f8rKncTx4lQC6JSi7NN5ef19c8pA_HzlFqmPXyi3MKyWKehPHzIMt6zjLtB_yFacryAvV2hpVMbGGYCI9XWQQwuB-rvu2wuCCqGOPt4LBClPVX6gE36oul3F-T_cfpxNQDGwHzFcoNSlBkrty2z9cIm5aMW51pcx9nhxdi0VpQ2zF6jas15J0dcbB6xJ_XuI)
+    }
+.gold-pulse {
+    box-shadow: 0 0 0 0 rgba(230, 195, 100, 0.4);
+    animation: pulse-gold 2s infinite
+    }
+@keyframes pulse-gold {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(230, 195, 100, 0.7);
+        } 70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(230, 195, 100, 0);
+        } 100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(230, 195, 100, 0);
+        }
+    }
+.animate-progress {
+    background: linear-gradient(90deg, #8a1a1a 0%, #e6c364 100%);
+    background-size: 200% 100%;
+    animation: move-progress 3s linear infinite
+    }
+@keyframes move-progress {
+    0% {
+        background-position: 200% 0;
+        } 100% {
+        background-position: -200% 0;
+        }
+    }
+.typewriter {
+    display: inline-block;
+    border-right: 2px solid #e6c364;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite
+    }
+@keyframes typing {
+    from {
+        width: 0
+        } to {
+        width: 100%
+        }
+    }
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent
+        } 50% {
+        border-color: #e6c364
+        }
+    }
+.floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none
+    }
+.cooking-canvas {
+    perspective: 1000px
+    }
+.rotating-plate {
+    animation: rotate-plate 12s linear infinite
+    }
+@keyframes rotate-plate {
+    from {
+        transform: rotateY(0deg) rotateX(15deg);
+        } to {
+        transform: rotateY(360deg) rotateX(15deg);
+        }
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-background dark:bg-background border-b border-outline-variant shadow-sm">
+<div class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary tracking-tighter italic">L'ÉLITE</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary scale-95 active:opacity-80 transition-all">shopping_cart</button>
+</div>
+</header>
+<main class="pt-16 min-h-screen flex flex-col">
+<!-- 3D Animation Zone -->
+<section class="relative h-[530px] w-full flex items-center justify-center overflow-hidden bg-surface-container-lowest">
+<div class="cooking-canvas flex items-center justify-center">
+<!-- Abstract 3D Cooking Representation -->
+<div class="rotating-plate relative w-64 h-64 md:w-80 md:h-80">
+<img alt="Cooking Animation Plate" class="w-full h-full object-cover rounded-full border-2 border-primary/30 shadow-2xl opacity-80" data-alt="A high-end cinematic shot of a luxury matte black porcelain plate rotating slowly in mid-air. The lighting is dramatic and moody with golden rim highlights. Fine culinary particles and steam waft around the plate in a sophisticated dark restaurant kitchen atmosphere. The scene is shot with shallow depth of field, emphasizing premium textures and gold accents." src="https://lh3.googleusercontent.com/aida/AP1WRLs6l_kKdZS3Xj9qLAEH9MVSr7TGPm149AJmVWfYEXIyyz4oaH9NxeK32lyaIHAuErf4zKkuxTLhDpSFsowJN88nuoMIRtQOkq-T79SJtogHULRzL-2tDoGpAiIGYSmCw0P9rNyzwdfmvOLayCI8jQ_ZVV0yYs44Nw42WjDy316PT2OjAMmoFodCMixkoC4lzZ8B0vrQ1DJXC7xXfAskUUMzRAXVxD7cHTxbmIo83dN4zK2tQkpBXelC35M"/>
+<!-- Decorative Floating Elements -->
+<div class="absolute -top-4 -left-4 w-12 h-12 border border-primary rounded-full animate-ping opacity-20"></div>
+<div class="absolute -bottom-8 -right-4 w-16 h-16 border border-secondary rounded-full animate-bounce opacity-10"></div>
+</div>
+</div>
+<!-- Particles Layer -->
+<div class="floating-particles" id="particles-container">
+<!-- Particles injected by JS -->
+</div>
+<!-- Bottom Gradient Overlay -->
+<div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</section>
+<!-- Status & Tracking Content -->
+<section class="flex-1 px-container-margin -mt-12 relative z-10 pb-32">
+<div class="max-w-4xl mx-auto space-y-12">
+<!-- Time & Status Message -->
+<div class="text-center space-y-4">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary">
+                        ~ 4 <span class="font-price-lg text-price-lg">MIN</span>
+</h2>
+<div class="h-8">
+<p class="typewriter font-headline-sm text-headline-sm-mobile md:text-headline-sm italic text-on-surface-variant">
+                            Le chef s'affaire avec soin...
+                        </p>
+</div>
+</div>
+<!-- Horizontal Stepper -->
+<div class="relative pt-8 pb-4">
+<!-- Progress Bar Background -->
+<div class="absolute top-[48px] left-0 w-full h-1 bg-surface-variant/30 rounded-full"></div>
+<!-- Animated Active Progress -->
+<div class="absolute top-[48px] left-0 w-[66%] h-1 animate-progress rounded-full"></div>
+<div class="relative flex justify-between items-start">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-4 w-1/4">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md-mobile text-on-surface opacity-70">Reçue</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-4 w-1/4">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md-mobile text-on-surface opacity-70">Confirmée</span>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex flex-col items-center gap-4 w-1/4">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center gold-pulse relative z-10">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<span class="font-label-md text-label-md-mobile text-primary font-bold">En cuisson</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-4 w-1/4 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</div>
+<span class="font-label-md text-label-md-mobile">Prête</span>
+</div>
+</div>
+</div>
+<!-- Order Details Card -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/30 shadow-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-sm text-headline-sm-mobile">Votre Commande</h3>
+<span class="text-secondary font-label-md">#EL-2094</span>
+</div>
+<ul class="space-y-4">
+<li class="flex justify-between items-center text-on-surface-variant">
+<span>Filet de Bœuf Wagyu × 1</span>
+<span class="font-price-md text-primary">85,00€</span>
+</li>
+<li class="flex justify-between items-center text-on-surface-variant">
+<span>Domaine de la Romanée-Conti (Verre) × 2</span>
+<span class="font-price-md text-primary">120,00€</span>
+</li>
+<li class="pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-bold text-on-surface">Total</span>
+<span class="font-price-lg text-primary font-bold">205,00€</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-secondary-container dark:bg-secondary-container shadow-[0_-4px_24px_rgba(0,0,0,0.6)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-label-md text-label-md-mobile">Order</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed font-bold scale-110 active:bg-secondary/20 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="speed" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="font-label-md text-label-md-mobile">Tracking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md-mobile">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md-mobile">Cart</span>
+</a>
+</nav>
+<script>
+        // Particle generation for the cooking animation
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 20;
+            const colors = ['#e6c364', '#8a1a1a', '#ffffff'];
+
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                const size = Math.random() * 4 + 2;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                
+                p.style.position = 'absolute';
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.borderRadius = '50%';
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.bottom = '-10px';
+                p.style.opacity = Math.random() * 0.5;
+                p.style.filter = 'blur(1px)';
+                
+                container.appendChild(p);
+
+                p.animate([
+                    { transform: `translateY(0) translateX(0)`, opacity: p.style.opacity },
+                    { transform: `translateY(-${60 + Math.random() * 40}vh) translateX(${(Math.random() - 0.5) * 100}px)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    delay: delay * 1000,
+                    iterations: Infinity,
+                    easing: 'ease-out'
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+
+            // Minimalist interactive hover effect on tracking stages
+            const steps = document.querySelectorAll('.flex-col.items-center.gap-4');
+            steps.forEach(step => {
+                step.addEventListener('mouseenter', () => {
+                    step.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    step.style.transform = 'translateY(-4px)';
+                });
+                step.addEventListener('mouseleave', () => {
+                    step.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@100..900&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#adabab",
+                        "on-primary-container": "#503d00",
+                        "outline": "#99907e",
+                        "surface-container-high": "#292a27",
+                        "surface-container-highest": "#333532",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c19",
+                        "inverse-on-surface": "#2f312e",
+                        "surface-variant": "#333532",
+                        "primary-fixed-dim": "#e6c364",
+                        "background": "#121411",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-container": "#c9a84c",
+                        "secondary-container": "#8e1c1c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#403f3f",
+                        "secondary": "#ffb3ac",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-secondary": "#680007",
+                        "error-container": "#93000a",
+                        "primary": "#e6c364",
+                        "on-primary": "#3d2e00",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary-fixed": "#ffe08f",
+                        "on-secondary-fixed-variant": "#8a1a1a",
+                        "surface-dim": "#121411",
+                        "on-surface-variant": "#d0c5b2",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-secondary-container": "#ff9e96",
+                        "surface-bright": "#383a36",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#e6c364",
+                        "on-surface": "#e3e3de",
+                        "inverse-surface": "#e3e3de",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0d0f0c",
+                        "secondary-fixed": "#ffdad6",
+                        "surface-container": "#1e201d",
+                        "tertiary": "#c9c6c6",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#121411",
+                        "on-error": "#690005",
+                        "on-background": "#e3e3de",
+                        "outline-variant": "#4d4637",
+                        "inverse-primary": "#755b00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "section-gap-mobile": "48px",
+                        "container-margin": "24px",
+                        "base": "8px",
+                        "section-gap-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "price-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "price-lg": ["EB Garamond"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .film-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #121411; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #4d4637; border-radius: 10px; }
+        .drawer-open { transform: translateX(0) !important; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<div class="film-grain"></div>
+<!-- Layout Shell -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="hidden lg:flex flex-col h-full py-8 px-4 bg-surface-container-low border-r border-outline-variant shadow-lg w-64 z-40">
+<div class="font-headline-md text-headline-md text-primary mb-8 tracking-tighter italic">L'ÉLITE</div>
+<div class="space-y-2 flex-grow">
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary border-r-2 border-primary bg-secondary-container/10 font-label-md text-label-md transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+                        Menu
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">event_available</span>
+                        Reservations
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+                        KDS
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+                        Analytics
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</nav>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary">
+<img alt="Chef" data-alt="A portrait of a professional executive chef with a sharp, determined gaze, wearing a crisp white double-breasted uniform. The background is a blurred high-end commercial kitchen with warm atmospheric lighting. The photo has a cinematic, high-contrast aesthetic that fits the modern luxury restaurant theme." src="https://lh3.googleusercontent.com/aida/AP1WRLswkBQG6umO6nC2AI3ks3hjsWoQzF7_LSBgCMZFKVBhPHtuUnbDG3RTYO5QVDFrrv6ltpxRAVXNgpisMPjwzDrXE86AOFcuNo1ZFRvV5EQ3oEKHHuwDCER41D42gIs27FomU99s2mp7EAF5SlIXqf5pFh3M1ua2-DTbuZQqoh1RazL4APrGMLQ5RvJD9eJJwZTyZDwvKMBHuLtMlKKmQlldBDNK7k8XGYvLqN5bYXmLDwtvp3bS3F79CLc"/>
+</div>
+<div>
+<div class="font-label-md text-on-surface text-xs">Chef de Cuisine</div>
+<div class="font-body-md text-on-surface-variant text-[10px]">L'ÉLITE Paris</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-background relative overflow-hidden">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 right-0 left-0 lg:left-64 z-30 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Gestion Menu</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:shadow-[0_0_15px_rgba(230,195,100,0.4)] transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        NOUVEAU PLAT
+                    </button>
+<div class="text-on-surface-variant flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">shopping_cart</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+</div>
+</div>
+</header>
+<!-- Table Content Area -->
+<div class="mt-16 p-container-margin overflow-auto h-full custom-scrollbar">
+<div class="max-w-7xl mx-auto space-y-6 pb-24">
+<!-- Filters/Bento Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant flex justify-between items-end">
+<div>
+<p class="font-label-md text-on-surface-variant text-[10px] uppercase tracking-widest">Total Plats</p>
+<h3 class="font-headline-md text-primary mt-1">42</h3>
+</div>
+<span class="material-symbols-outlined text-outline-variant">restaurant</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant flex justify-between items-end">
+<div>
+<p class="font-label-md text-on-surface-variant text-[10px] uppercase tracking-widest">Actifs</p>
+<h3 class="font-headline-md text-primary mt-1">38</h3>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant flex justify-between items-end">
+<div>
+<p class="font-label-md text-on-surface-variant text-[10px] uppercase tracking-widest">Épuisés</p>
+<h3 class="font-headline-md text-secondary mt-1">4</h3>
+</div>
+<span class="material-symbols-outlined text-secondary">warning</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant flex justify-between items-end">
+<div>
+<p class="font-label-md text-on-surface-variant text-[10px] uppercase tracking-widest">Chiffre Estimé</p>
+<h3 class="font-headline-md text-primary mt-1">€12.4k</h3>
+</div>
+<span class="material-symbols-outlined text-outline-variant">analytics</span>
+</div>
+</div>
+<!-- Luxury Table -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant overflow-hidden shadow-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-[11px] uppercase tracking-widest">Produit</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-[11px] uppercase tracking-widest">Catégorie</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-[11px] uppercase tracking-widest text-right">Prix</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-[11px] uppercase tracking-widest text-center">Disponibilité</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-[11px] uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-variant/10 transition-colors cursor-pointer" onclick="toggleDrawer()">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Dish" data-alt="A gourmet dish of seared wagyu beef served on a dark artisanal ceramic plate, garnished with micro-greens and a rich bordelaise reduction. The lighting is moody and focused, highlighting the texture of the meat and the sheen of the sauce against the deep shadows of the table setting." src="https://lh3.googleusercontent.com/aida/AP1WRLtb-Tom-Hz2B6iUVdDKR5_4pyZsvFP1UthuNfAzjNyr2FV_lIT6miytgOx8iY6t3F7mVx2TBUtrEMjHeUru2fk1mE-iFyCmjKf8Xrouf3po5LPqxw-AGZ8VQc4VBJApEPhHTA9keFHx52HKrBsb3Ko_GmB7JLV8cM5gQ7XAeqRVdwK3x6cxDTlfvae8u76HvlVxHR-oA3R46u07-xrXzXtk9acOVA_Txhu_gjNh2S9wCT0LEb73-W0iVqk"/>
+</div>
+<div>
+<p class="font-headline-sm text-base text-on-surface group-hover:text-primary transition-colors">Wagyu A5 aux Morilles</p>
+<p class="font-body-md text-xs text-on-surface-variant">Pièce de 200g, origine Kagoshima</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full border border-outline-variant text-[10px] font-label-md text-on-surface-variant uppercase">Viandes</span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="font-price-md text-primary">€125,00</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-primary">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-on-primary shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary">more_vert</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-variant/10 transition-colors cursor-pointer" onclick="toggleDrawer()">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Dish" data-alt="A delicate dessert featuring gold-leaf chocolate spheres and hazelnut praline, elegantly plated on a white marble slab. The image is captured in a high-luxury style with warm golden highlights and sharp focus on the shimmering textures of the dessert." src="https://lh3.googleusercontent.com/aida/AP1WRLu3EujpAJmM6AQkFvxY0MAUm1f7Mr9erlCP3oeFzUYHVxXx_1t-B8DeCvYf2T40hmOwuo0_ZseErwIY-a1onNDq94MIY29r_Xtf_Tyww-1JbsKjHW4rDpIW-RaYVJ3wJHcx7_VXCcNvvYK_HVa7CbWicK_-MZvhhTYEirDDknIfhNv8EiZvYXBt85dEBJp6mlnclY-hfbH-7dQ_nCrryFFSTKXhaiFatOVDROucOJtYRCvgThMJf0WmcNs"/>
+</div>
+<div>
+<p class="font-headline-sm text-base text-on-surface group-hover:text-primary transition-colors">Sphère d'Or Chocolat</p>
+<p class="font-body-md text-xs text-on-surface-variant">Praliné noisette et éclat d'or</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full border border-outline-variant text-[10px] font-label-md text-on-surface-variant uppercase">Desserts</span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="font-price-md text-primary">€28,00</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-primary">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-on-primary shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary">more_vert</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-variant/10 transition-colors cursor-pointer" onclick="toggleDrawer()">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Dish" data-alt="A platter of fresh oysters served on crushed ice with lemon wedges and a small bowl of mignonette sauce. The setting is an upscale seafood bar with dim, ambient lighting, focusing on the fresh, glistening textures of the shells and the cold mist rising from the ice." src="https://lh3.googleusercontent.com/aida/AP1WRLua7njAg1svUolUCNPl6wleTDcM3Y05kLFupznf6Gmo3QDDq4MEzMMl879fPEcpjdJYO3zhHwqEfuLEuvXXSsrtpYu04H-bJg9Edf3pXmt8c_9hrxyXxdwliDEVjPwFdsVRK58iJ6SkZLXjHYHnQsKzxTtKH022-dnX1bBhw4Jpq1604NHIRVaHvTrZCRRwUu1mWjbk4fnK9F-abqDWDmDfMidazNrXJTrL88f2ONZj-STFfSZU1z9Xfs4"/>
+</div>
+<div>
+<p class="font-headline-sm text-base text-on-surface group-hover:text-primary transition-colors">Huîtres Gillardeau N°2</p>
+<p class="font-body-md text-xs text-on-surface-variant">Plateau de 6, perles d'Oléron</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full border border-outline-variant text-[10px] font-label-md text-on-surface-variant uppercase">Entrées</span>
+</td>
+<td class="px-6 py-5 text-right">
+<p class="font-price-md text-primary">€42,00</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-outline-variant">
+<span class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-surface-container-highest shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-secondary-container md:hidden shadow-[0_-4px_24px_rgba(0,0,0,0.6)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary-fixed font-bold scale-110" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-md text-[10px]">Order</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span class="font-label-md text-[10px]">Tracking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-[10px]">Cart</span>
+</a>
+</nav>
+</main>
+<!-- Right Side Edit Drawer (480px) -->
+<div class="fixed top-0 right-0 h-full w-full max-w-[480px] bg-surface-container-low border-l border-outline-variant z-[60] transform translate-x-full transition-transform duration-500 ease-in-out shadow-2xl flex flex-col" id="editDrawer">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container">
+<div>
+<h2 class="font-headline-sm text-primary">Édition Plat</h2>
+<p class="text-xs text-on-surface-variant">Identifiant unique: #LX-9402</p>
+</div>
+<button class="p-2 hover:bg-surface-variant rounded-full transition-colors" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+<!-- Photo Upload Zone -->
+<div class="space-y-3">
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest">Photographie &amp; 3D</label>
+<div class="relative group">
+<div class="w-full h-48 rounded-xl border-2 border-dashed border-outline-variant bg-surface-container-lowest flex flex-col items-center justify-center gap-3 group-hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-outline-variant group-hover:text-primary">add_a_photo</span>
+<p class="text-xs text-on-surface-variant">Faire glisser une image haute résolution</p>
+</div>
+<div class="absolute bottom-3 right-3 bg-background/80 backdrop-blur-md p-2 rounded-lg border border-primary/30 flex items-center gap-2 hover:bg-primary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="text-[10px] font-label-md text-primary">MODÈLE 3D ACTIF</span>
+</div>
+</div>
+</div>
+<!-- Basic Info Inputs -->
+<div class="space-y-4">
+<div>
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest block mb-2">Nom du Plat</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="text" value="Wagyu A5 aux Morilles"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest block mb-2">Prix (€)</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 text-primary font-price-md focus:border-primary outline-none" type="number" value="125.00"/>
+</div>
+<div>
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest block mb-2">Catégorie</label>
+<select class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary outline-none appearance-none">
+<option>Entrées</option>
+<option selected="">Viandes</option>
+<option>Poissons</option>
+<option>Desserts</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Nutrition & Allergens -->
+<div class="space-y-4">
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest block">Valeurs Nutritionnelles (pour 100g)</label>
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-background border border-outline-variant p-3 rounded-lg text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">Kcal</p>
+<p class="font-price-md text-sm text-on-surface">342</p>
+</div>
+<div class="bg-background border border-outline-variant p-3 rounded-lg text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">Prot.</p>
+<p class="font-price-md text-sm text-on-surface">24g</p>
+</div>
+<div class="bg-background border border-outline-variant p-3 rounded-lg text-center">
+<p class="text-[10px] text-on-surface-variant uppercase">Gluc.</p>
+<p class="font-price-md text-sm text-on-surface">2g</p>
+</div>
+</div>
+<div class="pt-4">
+<label class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest block mb-4">Allergènes</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Gluten</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Lactose</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Arachides</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Sulfites</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-outline-variant bg-surface-container flex gap-3">
+<button class="flex-1 py-3 border border-outline-variant rounded-lg text-on-surface font-label-md text-sm hover:bg-surface-variant transition-colors">
+                    ANNULER
+                </button>
+<button class="flex-[2] py-3 bg-primary text-on-primary rounded-lg font-label-md text-sm hover:shadow-[0_0_15px_rgba(230,195,100,0.3)] transition-all">
+                    ENREGISTRER
+                </button>
+</div>
+</div>
+<!-- Overlay for Drawer -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300" id="drawerOverlay" onclick="toggleDrawer()"></div>
+</div>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('editDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            
+            if (drawer.classList.contains('drawer-open')) {
+                drawer.classList.remove('drawer-open');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+            } else {
+                drawer.classList.add('drawer-open');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            }
+        }
+
+        // Add subtle parallax/hover effect to cards
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mousemove', (e) => {
+                const rect = row.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                row.style.setProperty('--mouse-x', `${x}px`);
+                row.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

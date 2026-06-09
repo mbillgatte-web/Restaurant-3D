@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'ÉLITE - Commande Prête</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@100..900&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0D0D0D;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            color: #e3e3de;
+            overflow-x: hidden;
+        }
+        .canvas-confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+        .radar-grid {
+            stroke: #4d4637;
+            stroke-width: 1;
+            fill: none;
+        }
+        .radar-area {
+            fill: rgba(230, 195, 100, 0.2);
+            stroke: #e6c364;
+            stroke-width: 2;
+        }
+        .star-rating .material-symbols-outlined {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .star-rating .material-symbols-outlined.active {
+            font-variation-settings: 'FILL' 1;
+            color: #e6c364;
+        }
+        .luxury-card {
+            background: #1A1A1A;
+            border: 1px solid #2A2A2A;
+            transition: border-color 0.3s ease;
+        }
+        .luxury-card:hover {
+            border-color: #e6c364;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#adabab",
+                        "on-primary-container": "#503d00",
+                        "outline": "#99907e",
+                        "surface-container-high": "#292a27",
+                        "surface-container-highest": "#333532",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c19",
+                        "inverse-on-surface": "#2f312e",
+                        "surface-variant": "#333532",
+                        "primary-fixed-dim": "#e6c364",
+                        "background": "#121411",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-container": "#c9a84c",
+                        "secondary-container": "#8e1c1c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#403f3f",
+                        "secondary": "#ffb3ac",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-secondary": "#680007",
+                        "error-container": "#93000a",
+                        "primary": "#e6c364",
+                        "on-primary": "#3d2e00",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary-fixed": "#ffe08f",
+                        "on-secondary-fixed-variant": "#8a1a1a",
+                        "surface-dim": "#121411",
+                        "on-surface-variant": "#d0c5b2",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-secondary-container": "#ff9e96",
+                        "surface-bright": "#383a36",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#e6c364",
+                        "on-surface": "#e3e3de",
+                        "inverse-surface": "#e3e3de",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0d0f0c",
+                        "secondary-fixed": "#ffdad6",
+                        "surface-container": "#1e201d",
+                        "tertiary": "#c9c6c6",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#121411",
+                        "on-error": "#690005",
+                        "on-background": "#e3e3de",
+                        "outline-variant": "#4d4637",
+                        "inverse-primary": "#755b00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "section-gap-mobile": "48px",
+                        "container-margin": "24px",
+                        "base": "8px",
+                        "section-gap-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "price-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "price-lg": ["EB Garamond"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24 md:pb-0">
+<canvas class="canvas-confetti" id="confetti-canvas"></canvas>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-background dark:bg-background border-b border-outline-variant shadow-sm">
+<span class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary tracking-tighter italic">L'ÉLITE</span>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">shopping_cart</span>
+</div>
+</nav>
+<main class="pt-24 px-container-margin max-w-7xl mx-auto">
+<!-- Success Header -->
+<header class="text-center mb-section-gap-mobile md:mb-section-gap-desktop animate-fade-in-up">
+<h1 class="font-display-lg-mobile md:text-display-lg text-primary mb-4">Votre commande est prête ! ✦</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Une symphonie culinaire vous attend. Nos serveurs vous rejoignent à l'instant même.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Order Details & Nutrition -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Dish Card 1 -->
+<section class="luxury-card p-6 rounded-xl overflow-hidden">
+<div class="flex flex-col md:flex-row gap-6 mb-8">
+<div class="w-full md:w-48 h-48 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A gourmet dish of seared Wagyu beef with gold leaf accents, served on a matte black ceramic plate. The lighting is dramatic and moody, emphasizing the rich textures and deep red tones. The setting is an exclusive high-end restaurant with a dark, sophisticated nocturnal color palette including accents of champagne gold and bordeaux." src="https://lh3.googleusercontent.com/aida/AP1WRLvZWPomMFaC6SfI4bHHfcrNCwrgS269n7XmVIBpeAP4vQtwfchOaEJGNzuH-iTBlIqb9nukEuYA2pIv7ZLGuKzJHfoUAhLLAVHAmsTEf5Ag_MjtmFI51R52EZmdh3z7D5-EfXiTYSNgIk95TghtVHNuqmrYMg8LDTBtFL34cT0Q1lx3q_3Du4i7-h6lnrkmyX-4_1yPrCGBMZ2fBnbC2tu4WOVfxs_IlRzZh2J5XBB8DspY_6_hcsarvlA"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Wagyu A5 aux Truffes Noires</h2>
+<span class="font-price-md text-price-md text-primary">85€</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6">Fines tranches de Wagyu saisies à la flamme, éclats de truffes noires du Périgord, jus de viande corsé.</p>
+<!-- Nutrition Bars -->
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-md text-on-surface-variant mb-1">
+<span>Énergie</span>
+<span class="text-primary">640 kcal</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary transition-all duration-1000" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">PROTÉINES 42G</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">GLUCIDES 8G</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">LIPIDES 52G</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<span class="font-label-md text-on-surface-variant">Notez ce plat :</span>
+<div class="flex gap-1 star-rating" data-dish-id="1">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(1, 1)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(1, 2)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(1, 3)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(1, 4)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(1, 5)">star</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:bg-primary-container transition-all active:scale-95">
+                            Recommander ce plat
+                        </button>
+</div>
+</section>
+<!-- Dish Card 2 -->
+<section class="luxury-card p-6 rounded-xl overflow-hidden">
+<div class="flex flex-col md:flex-row gap-6 mb-8">
+<div class="w-full md:w-48 h-48 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Hand-made lobster ravioli in a delicate saffron bisque, decorated with edible micro-greens and caviar. The presentation is elegant and minimalist on a wide-rimmed white porcelain plate. Professional food photography style with warm, inviting highlights and deep shadows reflecting a high-end dining environment." src="https://lh3.googleusercontent.com/aida/AP1WRLtFEGZzChSqIukTzT6S47F_ujDcifYYRllSdamHvF5yHyBUNG-baVSRjLTZ2PvFn7woV8uM7cAxQJVG-AHpGVfJf3ieTDH-oMoYIimvuEo4o8YtcSHklUv3Lef_a7RyB-mCG-MbdCxZPWG16DGntjTuteBJxtub2WjTW1ntwHyJWWqGqW8JcZXgoTz5zDAEiVuRQfatXZfkS6MJOvors0As4b4xYu14DixdEIZ7DMn_BUl5-xFe42ODOEk"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Ravioles de Homard Bleu</h2>
+<span class="font-price-md text-price-md text-primary">52€</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6">Pâte fraîche maison, chair de homard bleu, bisque onctueuse infusée au safran d'Iran.</p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-md text-on-surface-variant mb-1">
+<span>Énergie</span>
+<span class="text-primary">480 kcal</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary transition-all duration-1000" style="width: 55%"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">PROTÉINES 28G</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">GLUCIDES 34G</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant font-label-md text-on-surface-variant bg-surface-container-low">LIPIDES 22G</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<span class="font-label-md text-on-surface-variant">Notez ce plat :</span>
+<div class="flex gap-1 star-rating" data-dish-id="2">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(2, 1)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(2, 2)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(2, 3)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(2, 4)">star</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary" onclick="rate(2, 5)">star</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:bg-primary-container transition-all active:scale-95">
+                            Recommander ce plat
+                        </button>
+</div>
+</section>
+</div>
+<!-- Nutritional Summary & Actions -->
+<div class="lg:col-span-4 space-y-gutter">
+<section class="luxury-card p-8 rounded-xl text-center">
+<h3 class="font-headline-sm text-on-surface mb-8">Profil Nutritionnel Total</h3>
+<!-- Simplified Radar Chart -->
+<div class="relative w-48 h-48 mx-auto mb-8">
+<svg class="w-full h-full transform -rotate-18" viewbox="0 0 100 100">
+<!-- Background Grid -->
+<polygon class="radar-grid" points="50,5 95,35 78,85 22,85 5,35"></polygon>
+<polygon class="radar-grid" points="50,25 72,40 64,65 36,65 28,40"></polygon>
+<!-- Data Shape -->
+<polygon class="radar-area" points="50,15 85,38 70,75 35,80 15,45"></polygon>
+<!-- Labels -->
+<circle cx="50" cy="5" fill="#e6c364" r="1"></circle>
+<circle cx="95" cy="35" fill="#e6c364" r="1"></circle>
+<circle cx="78" cy="85" fill="#e6c364" r="1"></circle>
+<circle cx="22" cy="85" fill="#e6c364" r="1"></circle>
+<circle cx="5" cy="35" fill="#e6c364" r="1"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col justify-between p-2 pointer-events-none text-[10px] font-label-md uppercase tracking-widest text-on-surface-variant">
+<span class="text-center">Vitamines</span>
+<div class="flex justify-between w-full">
+<span>Fer</span>
+<span>Zinc</span>
+</div>
+<div class="flex justify-around w-full mb-2">
+<span>Fibres</span>
+<span>Omega-3</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="block font-label-md text-on-surface-variant text-xs mb-1">CALORIES TOTALES</span>
+<span class="font-headline-sm text-primary">1,120</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="block font-label-md text-on-surface-variant text-xs mb-1">IMPACT SANTÉ</span>
+<span class="font-headline-sm text-primary">A+</span>
+</div>
+</div>
+<button class="w-full py-4 border border-primary text-primary rounded-lg font-label-md hover:bg-primary/10 transition-all flex items-center justify-center gap-2 mb-4 group" onclick="callWaiter()">
+<span class="material-symbols-outlined group-hover:animate-bounce">notifications_active</span>
+                        APPELER LE SERVEUR
+                    </button>
+<p class="font-body-md text-on-surface-variant text-sm italic">"Une expérience sans attente pour un plaisir sans égal."</p>
+</section>
+<!-- Status Card -->
+<section class="luxury-card p-6 rounded-xl flex items-center gap-4 bg-secondary-container/10">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">Service Immédiat</h4>
+<p class="font-body-md text-xs text-on-surface-variant">Le Chef de Rang a été notifié de votre disponibilité.</p>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-secondary-container dark:bg-secondary-container shadow-[0_-4px_24px_rgba(0,0,0,0.6)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-secondary-container opacity-70">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-md text-label-md-mobile">Order</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed font-bold scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="font-label-md text-label-md-mobile">Tracking</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container opacity-70">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md-mobile">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container opacity-70">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md-mobile">Cart</span>
+</div>
+</nav>
+<script>
+        // Confetti Animation Logic
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 6 + 2;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = (Math.random() - 0.5) * 4;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.color = Math.random() > 0.5 ? '#e6c364' : '#ffdad6'; // Gold or Pinkish secondary
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) {
+                    const index = particles.indexOf(this);
+                    particles.splice(index, 1);
+                }
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    particles.push(new Particle());
+                }, i * 15);
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+        setTimeout(createConfetti, 500);
+
+        // Star Rating Logic
+        function rate(dishId, rating) {
+            const container = document.querySelector(`.star-rating[data-dish-id="${dishId}"]`);
+            const stars = container.querySelectorAll('.material-symbols-outlined');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                    star.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    star.classList.remove('active');
+                    star.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+            
+            // Visual feedback
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md shadow-lg z-50 animate-bounce';
+            toast.innerText = 'Merci pour votre avis !';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        function callWaiter() {
+            const btn = event.currentTarget;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> NOTIFICATION ENVOYÉE...';
+            btn.classList.add('opacity-50', 'pointer-events-none');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">done_all</span> SERVEUR EN ROUTE';
+                btn.classList.remove('border-primary', 'text-primary');
+                btn.classList.add('bg-primary-container', 'text-on-primary-container');
+            }, 1500);
+        }
+    </script>
+</body></html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#adabab",
+                      "on-primary-container": "#503d00",
+                      "outline": "#99907e",
+                      "surface-container-high": "#292a27",
+                      "surface-container-highest": "#333532",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#1a1c19",
+                      "inverse-on-surface": "#2f312e",
+                      "surface-variant": "#333532",
+                      "primary-fixed-dim": "#e6c364",
+                      "background": "#121411",
+                      "on-secondary-fixed": "#410003",
+                      "tertiary-fixed-dim": "#c9c6c5",
+                      "primary-container": "#c9a84c",
+                      "secondary-container": "#8e1c1c",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-tertiary-container": "#403f3f",
+                      "secondary": "#ffb3ac",
+                      "secondary-fixed-dim": "#ffb3ac",
+                      "on-secondary": "#680007",
+                      "error-container": "#93000a",
+                      "primary": "#e6c364",
+                      "on-primary": "#3d2e00",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "primary-fixed": "#ffe08f",
+                      "on-secondary-fixed-variant": "#8a1a1a",
+                      "surface-dim": "#121411",
+                      "on-surface-variant": "#d0c5b2",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-primary-fixed-variant": "#584400",
+                      "on-secondary-container": "#ff9e96",
+                      "surface-bright": "#383a36",
+                      "on-tertiary": "#313030",
+                      "surface-tint": "#e6c364",
+                      "on-surface": "#e3e3de",
+                      "inverse-surface": "#e3e3de",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#0d0f0c",
+                      "secondary-fixed": "#ffdad6",
+                      "surface-container": "#1e201d",
+                      "tertiary": "#c9c6c6",
+                      "on-primary-fixed": "#241a00",
+                      "surface": "#121411",
+                      "on-error": "#690005",
+                      "on-background": "#e3e3de",
+                      "outline-variant": "#4d4637",
+                      "inverse-primary": "#755b00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "section-gap-mobile": "48px",
+                      "container-margin": "24px",
+                      "base": "8px",
+                      "section-gap-desktop": "80px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Playfair Display"],
+                      "label-md": ["Inter"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"],
+                      "price-md": ["EB Garamond"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Playfair Display"],
+                      "price-lg": ["EB Garamond"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+        }
+        .bottom-sheet-slide {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+            background-color: rgba(13, 13, 13, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<div class="grain-overlay"></div>
+<!-- Background Content Mockup (L'ÉLITE Main View) -->
+<main class="min-h-screen p-container-margin opacity-30 select-none">
+<header class="flex justify-between items-center mb-12">
+<h1 class="font-headline-md text-headline-md text-primary italic tracking-tighter">L'ÉLITE</h1>
+<span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-64 bg-surface-container rounded-xl"></div>
+</div>
+</main>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-40 backdrop-blur-custom flex items-end" id="modal-backdrop">
+<!-- Bottom Sheet Modal -->
+<div class="bottom-sheet-slide w-full max-w-2xl mx-auto bg-surface-container-low rounded-t-[32px] shadow-2xl overflow-hidden relative border-t border-outline-variant" id="bottom-sheet">
+<!-- Handle -->
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full mx-auto mt-4 mb-2"></div>
+<!-- Close Action (Absolute) -->
+<button class="absolute right-6 top-6 z-50 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<!-- Scrollable Content Container -->
+<div class="max-h-[751px] overflow-y-auto pb-32">
+<!-- 3D Viewer Area / Hero Image -->
+<div class="relative w-full h-[280px] bg-[#0D0D0D] flex items-center justify-center overflow-hidden">
+<!-- 3D Model Placeholder Representation -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-low/80"></div>
+<img class="h-full w-full object-cover mix-blend-lighten scale-110 hover:scale-125 transition-transform duration-700 ease-out" data-alt="A hyper-realistic 3D rendering of a gourmet culinary masterpiece featuring glazed duck breast with orange reduction. The dish is presented on a minimalist matte black ceramic plate, floating in a dark, atmospheric space with soft golden rim lighting. The aesthetic is ultra-luxurious, emphasizing the rich textures of the food and the nocturnal, sophisticated ambiance of the L'ÉLITE brand." src="https://lh3.googleusercontent.com/aida/AP1WRLtoxtpCWX4cXzVKlCTyFbUq11XYLhOdOnFnokHJJ7SJxuCcd4eGo6Qt4wCftMInrBzy_xDfuk8-oGKhZi-Cdc74E4yYPzhwOQyxM4V-O0aprqHVQv_mOVpCvt9kXErz8AmcZooimSowEx4Ko5PKMqouO1DOCoSWiqLvXiwoV2OU4d_4NTAUzH6X3_0iwBw6BAhfrGgduV9H1TXZyoQUBMcbbHg_CFcN7DZ6It9U1ozdJsfDoYuaSrXu98A"/>
+<!-- Interaction Indicator -->
+<div class="absolute bottom-4 right-6 flex items-center gap-2 bg-black/40 backdrop-blur px-3 py-1.5 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-sm">3d_rotation</span>
+<span class="text-[10px] font-label-md text-on-surface-variant uppercase tracking-widest">Aperçu 3D interactif</span>
+</div>
+</div>
+<!-- Product Details -->
+<div class="px-container-margin mt-8">
+<div class="flex justify-between items-start gap-4">
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface leading-tight">Canard à l'Orange <br/><span class="italic font-normal">Façon Élite</span></h2>
+<span class="font-price-lg text-price-lg text-primary">38,00€</span>
+</div>
+<p class="mt-4 text-on-surface-variant font-body-md text-body-md-mobile leading-relaxed max-w-prose">
+                        Magret de canard de Barbarie rôti sur coffre, fine mousseline de carottes au gingembre, et son jus corsé réduit à l'orange amère de Sicile. Une harmonie parfaite entre puissance et acidité.
+                    </p>
+<!-- Allergen Pill Icons -->
+<div class="flex gap-3 mt-6">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant bg-surface-variant/10">
+<span class="material-symbols-outlined text-primary text-lg">psychology</span>
+<span class="font-label-md text-[11px] uppercase text-on-surface-variant">Fruits à coque</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant bg-surface-variant/10">
+<span class="material-symbols-outlined text-primary text-lg">eco</span>
+<span class="font-label-md text-[11px] uppercase text-on-surface-variant">Bio-sourcé</span>
+</div>
+</div>
+<!-- Nutrient Accordion -->
+<div class="mt-8 border-t border-outline-variant/30">
+<button class="w-full flex justify-between items-center py-5 group" onclick="toggleAccordion('nutrients')">
+<span class="font-label-md text-label-md text-on-surface">VALEURS NUTRITIONNELLES</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-transform duration-300" id="acc-icon">expand_more</span>
+</button>
+<div class="hidden overflow-hidden transition-all duration-300" id="acc-content">
+<div class="grid grid-cols-2 gap-4 pb-6">
+<div class="bg-surface-container-highest/30 p-4 rounded-lg border border-outline-variant/20">
+<p class="text-on-surface-variant text-[12px] font-label-md mb-1 uppercase">Énergie</p>
+<p class="font-price-md text-primary text-xl">485 <span class="text-sm font-label-md">KCAL</span></p>
+</div>
+<div class="bg-surface-container-highest/30 p-4 rounded-lg border border-outline-variant/20">
+<p class="text-on-surface-variant text-[12px] font-label-md mb-1 uppercase">Protéines</p>
+<p class="font-price-md text-on-surface text-xl">32g</p>
+</div>
+<div class="bg-surface-container-highest/30 p-4 rounded-lg border border-outline-variant/20">
+<p class="text-on-surface-variant text-[12px] font-label-md mb-1 uppercase">Lipides</p>
+<p class="font-price-md text-on-surface text-xl">24g</p>
+</div>
+<div class="bg-surface-container-highest/30 p-4 rounded-lg border border-outline-variant/20">
+<p class="text-on-surface-variant text-[12px] font-label-md mb-1 uppercase">Glucides</p>
+<p class="font-price-md text-on-surface text-xl">12g</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Actions -->
+<div class="absolute bottom-0 left-0 w-full p-6 bg-surface-container-low border-t border-outline-variant/50 flex items-center justify-between gap-6">
+<!-- Quantity Stepper -->
+<div class="flex items-center border border-outline-variant rounded-lg bg-surface-container-lowest h-14 overflow-hidden">
+<button class="w-12 h-full flex items-center justify-center text-primary hover:bg-surface-variant/20 transition-colors" onclick="changeQty(-1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-10 text-center font-price-md text-on-surface" id="qty-val">1</span>
+<button class="w-12 h-full flex items-center justify-center text-primary hover:bg-surface-variant/20 transition-colors" onclick="changeQty(1)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Add to Cart Button -->
+<button class="flex-1 h-14 bg-primary text-on-primary rounded-lg font-label-md flex items-center justify-center gap-3 shadow-lg shadow-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+                    AJOUTER AU PANIER
+                </button>
+</div>
+</div>
+</div>
+<!-- Script for interaction -->
+<script>
+        function toggleAccordion(id) {
+            const content = document.getElementById('acc-content');
+            const icon = document.getElementById('acc-icon');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        let qty = 1;
+        function changeQty(delta) {
+            qty = Math.max(1, qty + delta);
+            document.getElementById('qty-val').innerText = qty;
+        }
+
+        // Entrance animation simulation
+        window.addEventListener('DOMContentLoaded', () => {
+            const sheet = document.getElementById('bottom-sheet');
+            sheet.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                sheet.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Close on backdrop click (simulated)
+        document.getElementById('modal-backdrop').addEventListener('click', (e) => {
+            if (e.target.id === 'modal-backdrop') {
+                const sheet = document.getElementById('bottom-sheet');
+                sheet.style.transform = 'translateY(100%)';
+                setTimeout(() => {
+                    // Logic to actually remove modal would go here
+                    console.log('Modal closed');
+                }, 400);
+            }
+        });
+    </script>
+</body></html>

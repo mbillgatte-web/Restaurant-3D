@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@100..900&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#adabab",
+                    "on-primary-container": "#503d00",
+                    "outline": "#99907e",
+                    "surface-container-high": "#292a27",
+                    "surface-container-highest": "#333532",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1a1c19",
+                    "inverse-on-surface": "#2f312e",
+                    "surface-variant": "#333532",
+                    "primary-fixed-dim": "#e6c364",
+                    "background": "#121411",
+                    "on-secondary-fixed": "#410003",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "primary-container": "#c9a84c",
+                    "secondary-container": "#8e1c1c",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-tertiary-container": "#403f3f",
+                    "secondary": "#ffb3ac",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "on-secondary": "#680007",
+                    "error-container": "#93000a",
+                    "primary": "#e6c364",
+                    "on-primary": "#3d2e00",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "primary-fixed": "#ffe08f",
+                    "on-secondary-fixed-variant": "#8a1a1a",
+                    "surface-dim": "#121411",
+                    "on-surface-variant": "#d0c5b2",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary-fixed-variant": "#584400",
+                    "on-secondary-container": "#ff9e96",
+                    "surface-bright": "#383a36",
+                    "on-tertiary": "#313030",
+                    "surface-tint": "#e6c364",
+                    "on-surface": "#e3e3de",
+                    "inverse-surface": "#e3e3de",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0d0f0c",
+                    "secondary-fixed": "#ffdad6",
+                    "surface-container": "#1e201d",
+                    "tertiary": "#c9c6c6",
+                    "on-primary-fixed": "#241a00",
+                    "surface": "#121411",
+                    "on-error": "#690005",
+                    "on-background": "#e3e3de",
+                    "outline-variant": "#4d4637",
+                    "inverse-primary": "#755b00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "section-gap-mobile": "48px",
+                    "container-margin": "24px",
+                    "base": "8px",
+                    "section-gap-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "label-md": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "price-md": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "price-lg": ["EB Garamond"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0d0d0d;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            color: #e3e3de;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4d4637;
+            border-radius: 10px;
+        }
+        .table-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .table-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(230, 195, 100, 0.2);
+        }
+        .active-table-ring {
+            box-shadow: 0 0 0 2px #e6c364;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<div class="grain-overlay"></div>
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-background dark:bg-background border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter italic">L'ÉLITE</span>
+<div class="hidden lg:flex gap-6">
+<a class="font-label-md text-label-md text-primary font-bold hover:text-primary transition-colors duration-250" href="#">Table Management</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Orders</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary scale-95 active:opacity-80 transition-all">shopping_cart</button>
+<div class="w-8 h-8 rounded-full border border-primary/30 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A portrait of a professional executive chef in a high-end restaurant, wearing a crisp white chef's coat with golden embroidery details. The lighting is sophisticated and cinematic, emphasizing the luxurious and glamorous atmosphere of a five-star hotel kitchen. The background is a blurred view of a modern dark-toned kitchen with warm copper accents." src="https://lh3.googleusercontent.com/aida/AP1WRLt0GGKncjOrHGVcgQuTUcnD8wGbsp5fPWyyTzx4KnC7uoilZXiMgJlHrRHWWgsXp3AuBxofeneY2dNpF2blV5JDwp-TqdRoIc3VMFCbQUMpaNmEiPPaNhSVaGP0aQt0gq2q22WkYPssQcMnGaF5u3gncSH5U3M_BXpjG4R8rxFcfkQh7PwJ5ZXJCOuBGH4N7MdGDMSz9EGke2YwqxpzQnYSlpfXT7vRh06xzPoC0-vi7ELgmg925V3oTig"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar Navigation Shell -->
+<aside class="hidden lg:flex flex-col h-full py-8 px-4 fixed left-0 top-16 w-64 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant shadow-lg z-40">
+<div class="space-y-2">
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary transition-all translate-x-1 duration-200">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-r-2 border-primary bg-secondary-container/10 transition-all translate-x-1 duration-200">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md">Tables &amp; QR</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary transition-all translate-x-1 duration-200">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-label-md text-label-md">Reservations</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary transition-all translate-x-1 duration-200">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/20 hover:text-primary transition-all translate-x-1 duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</div>
+<div class="mt-auto px-4 pb-4">
+<button class="w-full py-4 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                New Table
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 mt-16 p-6 lg:p-10 h-[calc(100vh-64px)] overflow-hidden flex flex-col">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+<div>
+<h1 class="font-headline-md text-headline-md-mobile lg:text-headline-md text-on-surface">Plan de Salle &amp; QR Codes</h1>
+<p class="font-body-md text-on-surface-variant mt-1">Gestion interactive de l'élégance culinaire.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 border border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-primary/10 transition-all active:scale-95" onclick="simulateBulkAction()">
+<span class="material-symbols-outlined">qr_code_2</span>
+                Générer tous les QR
+            </button>
+</header>
+<div class="flex flex-1 gap-8 overflow-hidden">
+<!-- Table Grid -->
+<div class="flex-1 overflow-y-auto custom-scrollbar pr-4">
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
+<!-- Table 01 (Occupied - Bordeaux) -->
+<div class="table-card relative p-8 bg-surface-container border border-outline-variant rounded-xl cursor-pointer active-table-ring group" onclick="selectTable('01', 'Occupée', 'bg-secondary-container')">
+<div class="absolute top-4 right-4 w-3 h-3 rounded-full bg-secondary-container shadow-[0_0_10px_#8e1c1c]"></div>
+<span class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-fixed transition-colors">01</span>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">4 Personnes</p>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-[10px] uppercase tracking-widest text-on-secondary-container font-bold">Occupée</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">visibility</span>
+</div>
+</div>
+<!-- Table 02 (Cleaning - Orange) -->
+<div class="table-card relative p-8 bg-surface-container border border-outline-variant rounded-xl cursor-pointer group" onclick="selectTable('02', 'En Nettoyage', 'bg-primary-container')">
+<div class="absolute top-4 right-4 w-3 h-3 rounded-full bg-primary-container shadow-[0_0_10px_#c9a84c]"></div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">02</span>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">2 Personnes</p>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">À Nettoyer</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">cleaning_services</span>
+</div>
+</div>
+<!-- Table 03 (Free - Green) -->
+<div class="table-card relative p-8 bg-surface-container border border-outline-variant rounded-xl cursor-pointer group" onclick="selectTable('03', 'Disponible', 'bg-[#4CAF50]')">
+<div class="absolute top-4 right-4 w-3 h-3 rounded-full bg-[#4CAF50] shadow-[0_0_10px_#4CAF50]"></div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">03</span>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">6 Personnes</p>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-[10px] uppercase tracking-widest text-[#4CAF50] font-bold">Libre</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">check_circle</span>
+</div>
+</div>
+<!-- Generate 12 more tables procedurally -->
+<script>
+                        const grid = document.currentScript.parentElement;
+                        for (let i = 4; i <= 15; i++) {
+                            const statusColor = i % 3 === 0 ? 'bg-secondary-container' : (i % 5 === 0 ? 'bg-primary-container' : 'bg-[#4CAF50]');
+                            const statusText = i % 3 === 0 ? 'Occupée' : (i % 5 === 0 ? 'En Nettoyage' : 'Disponible');
+                            const labelText = i % 3 === 0 ? 'OCCUPÉE' : (i % 5 === 0 ? 'À NETTOYER' : 'LIBRE');
+                            const tableId = i.toString().padStart(2, '0');
+                            
+                            const div = document.createElement('div');
+                            div.className = "table-card relative p-8 bg-surface-container border border-outline-variant rounded-xl cursor-pointer group";
+                            div.onclick = () => selectTable(tableId, statusText, statusColor);
+                            div.innerHTML = `
+                                <div class="absolute top-4 right-4 w-3 h-3 rounded-full ${statusColor}"></div>
+                                <span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">${tableId}</span>
+                                <p class="font-label-md text-label-md text-on-surface-variant mt-2">${(i % 4) + 2} Personnes</p>
+                                <div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+                                    <span class="text-[10px] uppercase tracking-widest font-bold" style="color: ${statusColor.includes('[') ? '#4CAF50' : 'var(--tw-text-opacity)'}">${labelText}</span>
+                                    <span class="material-symbols-outlined text-on-surface-variant text-sm">more_horiz</span>
+                                </div>
+                            `;
+                            grid.appendChild(div);
+                        }
+                    </script>
+</div>
+</div>
+<!-- Detail Panel (Table QR & Status) -->
+<aside class="w-[380px] hidden xl:flex flex-col bg-surface-container-high border border-outline-variant rounded-2xl overflow-hidden shadow-2xl" id="detail-panel">
+<div class="p-8 border-b border-outline-variant bg-surface-variant/10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-on-surface-variant font-label-md text-label-md">DÉTAILS DE LA TABLE</span>
+<h2 class="font-headline-md text-headline-md text-primary" id="selected-table-num">Table 01</h2>
+</div>
+<div class="px-3 py-1 bg-secondary-container rounded-full flex items-center gap-2" id="status-chip">
+<span class="w-2 h-2 rounded-full bg-on-secondary-container animate-pulse"></span>
+<span class="text-[10px] font-bold text-on-secondary-container uppercase tracking-tighter" id="status-text">Occupée</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl flex flex-col items-center gap-4 shadow-inner relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 10px 10px;"></div>
+<img class="w-48 h-48 relative z-10" data-alt="A high-resolution, luxury branded QR code placed on a white porcelain surface. The surrounding environment is a glamorous, dark-themed fine dining restaurant with golden accents and soft, cinematic ambient lighting. The QR code design is minimalist and elegant, intended for a Michelin-starred dining experience where guests scan to view a digital menu." id="qr-display" src="https://lh3.googleusercontent.com/aida/AP1WRLvhFgrDL_jrw3v-7-9dmTz-2iwe3pPrw0353N8a87wK2vcUt361y_PE5aWT0I0NOc8DFbcF_SZZaWm3Sg1iP8EGbtJUFATg-9QRqfXk_4hCONStgJ_8j4jJ_jnONj9JKZxQOoUil-U3fD4HfOlzQm9sYjPb4Rf4pwH4KnLCAiXiTBwx3_RN2lDQ_0vglxUAALb3bRMAEvGQ_JKoLxWWxC9yLTfaYJcYTxmxXxNj_7ssGnBt-PB2w69Qlg"/>
+<p class="font-label-md text-label-md text-black/50 text-center">ID: ELT-TB-01-2024</p>
+</div>
+<button class="w-full mt-6 py-4 flex items-center justify-center gap-3 bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-all hover:brightness-110 active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                        Télécharger PNG
+                    </button>
+</div>
+<div class="flex-1 p-8 overflow-y-auto custom-scrollbar space-y-6">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-4">Statut de Commande</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<div class="mt-1 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#e6c364]"></div>
+<div>
+<p class="text-on-surface font-label-md text-sm">Entrées servies</p>
+<p class="text-on-surface-variant text-xs">Il y a 12 minutes</p>
+</div>
+</div>
+<div class="flex items-start gap-3 opacity-50">
+<div class="mt-1 w-2 h-2 rounded-full bg-outline-variant"></div>
+<div>
+<p class="text-on-surface font-label-md text-sm">Plats principaux en cuisine</p>
+<p class="text-on-surface-variant text-xs">Prévision: 8 min</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest">Total Actuel</span>
+<span class="font-price-md text-price-md text-primary">184,00 €</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest">Serveur</span>
+<span class="font-label-md text-label-md text-on-surface">Jean-Baptiste</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Mobile Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-secondary-container dark:bg-secondary-container lg:hidden shadow-[0_-4px_24px_rgba(0,0,0,0.6)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-all scale-90 duration-200">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-md text-label-md-mobile">Order</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-fixed font-bold scale-110 active:bg-secondary/20 transition-all duration-200">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md-mobile">Tables</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-all scale-90 duration-200">
+<span class="material-symbols-outlined">speed</span>
+<span class="font-label-md text-label-md-mobile">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 active:bg-secondary/20 transition-all scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md-mobile">Profile</span>
+</button>
+</nav>
+<script>
+        function selectTable(id, status, colorClass) {
+            // Remove active rings
+            document.querySelectorAll('.table-card').forEach(card => card.classList.remove('active-table-ring'));
+            
+            // Add active ring to selected
+            event.currentTarget.classList.add('active-table-ring');
+
+            // Update panel
+            const panel = document.getElementById('detail-panel');
+            const numEl = document.getElementById('selected-table-num');
+            const statusText = document.getElementById('status-text');
+            const statusChip = document.getElementById('status-chip');
+            const qrImg = document.getElementById('qr-display');
+
+            numEl.textContent = `Table ${id}`;
+            statusText.textContent = status;
+            
+            // Manage status chip colors
+            statusChip.className = `px-3 py-1 ${colorClass} rounded-full flex items-center gap-2`;
+            const dot = statusChip.querySelector('span');
+            dot.className = `w-2 h-2 rounded-full animate-pulse ${status === 'Disponible' ? 'bg-white' : 'bg-on-secondary-container'}`;
+            statusText.className = `text-[10px] font-bold ${status === 'Disponible' ? 'text-white' : 'text-on-secondary-container'} uppercase tracking-tighter`;
+
+            // Update QR simulation
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Table${id}_L_ELITE_ORDER&bgcolor=ffffff&color=0d0d0d`;
+        }
+
+        function simulateBulkAction() {
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Génération...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check</span> Terminé';
+                btn.classList.add('bg-primary/20');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-primary/20');
+                }, 2000);
+            }, 1500);
+        }
+    </script>
+</body></html>

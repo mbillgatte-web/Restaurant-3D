@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@400;500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#adabab",
+                        "on-primary-container": "#503d00",
+                        "outline": "#99907e",
+                        "surface-container-high": "#292a27",
+                        "surface-container-highest": "#333532",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c19",
+                        "inverse-on-surface": "#2f312e",
+                        "surface-variant": "#333532",
+                        "primary-fixed-dim": "#e6c364",
+                        "background": "#121411",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "primary-container": "#c9a84c",
+                        "secondary-container": "#8e1c1c",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#403f3f",
+                        "secondary": "#ffb3ac",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-secondary": "#680007",
+                        "error-container": "#93000a",
+                        "primary": "#e6c364",
+                        "on-primary": "#3d2e00",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary-fixed": "#ffe08f",
+                        "on-secondary-fixed-variant": "#8a1a1a",
+                        "surface-dim": "#121411",
+                        "on-surface-variant": "#d0c5b2",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-secondary-container": "#ff9e96",
+                        "surface-bright": "#383a36",
+                        "on-tertiary": "#313030",
+                        "surface-tint": "#e6c364",
+                        "on-surface": "#e3e3de",
+                        "inverse-surface": "#e3e3de",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0d0f0c",
+                        "secondary-fixed": "#ffdad6",
+                        "surface-container": "#1e201d",
+                        "tertiary": "#c9c6c6",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#121411",
+                        "on-error": "#690005",
+                        "on-background": "#e3e3de",
+                        "outline-variant": "#4d4637",
+                        "inverse-primary": "#755b00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "section-gap-mobile": "48px",
+                        "container-margin": "24px",
+                        "base": "8px",
+                        "section-gap-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "price-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "price-lg": ["EB Garamond"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "price-md": ["20px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "price-lg": ["24px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-overlay {
+            background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .animate-delay-600 { animation-delay: 0.6s; opacity: 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen relative overflow-hidden flex flex-col items-center justify-center font-body-md text-body-md">
+<!-- Grain Overlay -->
+<div class="fixed inset-0 grain-overlay z-0"></div>
+<!-- Background Atmospheric Glow -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<main class="relative z-10 w-full max-w-md px-container-margin flex flex-col items-center text-center">
+<!-- Logo Section -->
+<div class="animate-fade-in-up mb-12">
+<div class="w-32 h-32 md:w-40 md:h-40 border-[0.5px] border-primary/30 rounded-full flex items-center justify-center relative group">
+<div class="absolute inset-0 border border-primary/10 rounded-full scale-110 animate-pulse"></div>
+<span class="material-symbols-outlined text-primary text-6xl md:text-7xl group-hover:scale-110 transition-transform duration-700" data-icon="restaurant" style="font-variation-settings: 'wght' 200;">restaurant</span>
+</div>
+</div>
+<!-- Brand Name & Badge -->
+<div class="animate-fade-in-up animate-delay-200 space-y-4 mb-16">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-widest uppercase italic">
+                L'ÉLITE
+            </h1>
+<h2 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-on-surface-variant tracking-tighter opacity-80">
+                COMMANDE TABLE
+            </h2>
+<div class="pt-4">
+<span class="inline-flex items-center px-6 py-2 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md-mobile border border-on-secondary-fixed-variant/30 shadow-lg">
+                    Table 7
+                </span>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="animate-fade-in-up animate-delay-400 w-full">
+<button class="group w-full py-5 px-8 rounded-lg bg-gradient-to-r from-primary to-primary-fixed-dim text-on-primary font-label-md text-label-md uppercase tracking-[0.2em] shadow-xl hover:shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3">
+<span>Voir le menu</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-2" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Image Hint (Hidden, providing context for the mood) -->
+<div class="sr-only">
+<img data-alt="A cinematic, low-angle photograph of a prestigious Michelin-starred restaurant interior at night. Warm, golden candlelight flickers across dark wood tables and velvet upholstery, creating a mood of exclusive luxury and intimate sophistication. The background is softly blurred with bokeh effects from high-end crystal glassware. The overall aesthetic is rich, nocturnal, and highly glamorous, consistent with a high-end culinary brand identity." src="https://lh3.googleusercontent.com/aida/AP1WRLvHUUDP_xSuzYUOgVu06nQIeILuuc78VBUYWCvYcqYPcKKxnB9uFG7iE-tkSvCs3FHXaRsuK-l-d-bS7dycEbc2aK-56P6W1y0xlm0H08fp6wjoSIc2PeHrYNkEypTtHH2exfOplTMSOdMjmIoJpJejiqgfGVzPbbs7OlFwH-YL-BNX0oK3eZhlnFNH_qP4LvARcDVoEPxIJ2Q40UvCWfiiOC-1qNbD0k0wNWNrSYwDM1T_XTSGJyHLWoE"/>
+</div>
+</main>
+<!-- Language Selector Footer -->
+<footer class="fixed bottom-12 left-0 w-full z-10 animate-fade-in-up animate-delay-600">
+<div class="flex justify-center items-center space-x-8">
+<button class="font-label-md text-label-md-mobile text-primary border-b border-primary pb-1">FR</button>
+<button class="font-label-md text-label-md-mobile text-on-surface-variant hover:text-primary transition-colors pb-1">EN</button>
+<button class="font-label-md text-label-md-mobile text-on-surface-variant hover:text-primary transition-colors pb-1">AR</button>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the button hover
+        const btn = document.querySelector('button');
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            btn.style.setProperty('--x', `${x}px`);
+            btn.style.setProperty('--y', `${y}px`);
+        });
+
+        // Simple entrance effect logic for language switches
+        const langBtns = document.querySelectorAll('footer button');
+        langBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.remove('text-primary', 'border-b', 'border-primary'));
+                langBtns.forEach(b => b.classList.add('text-on-surface-variant'));
+                button.classList.add('text-primary', 'border-b', 'border-primary');
+                button.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>
