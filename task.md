@@ -12,7 +12,8 @@
   - `[x]` Créer la barre de navigation (Header)
   - `[x]` Créer la page d'accueil de base
 - `[ ]` Étape 4 : Design et 3D
-  - `[ ]` Intégrer les styles globaux
+  - `[x]` Intégrer les styles globaux (Tailwind)
+  - `[/]` Convertir les interfaces HTML en React
   - `[ ]` Commencer l'intégration de la 3D (React Three Fiber)
 
 
@@ -26,15 +27,16 @@
                npm run dev sur localhost:5173
                [Session 1 — 12/06/2026]
  
-  🔄 Phase 1  — Design System
+  ✅ Phase 1  — Design System
                Tailwind CSS config, variables CSS couleurs, polices
-               [Session 1 — EN COURS]
+               [Session 1 — TERMINÉ]
  
   ⬜ Phase 2  — Routing & Layouts
                React Router, 4 layouts (Client, Kitchen, Admin, Server)
  
-  ⬜ Phase 3  — Pages statiques
+  🔄 Phase 3  — Pages statiques
                Convertir les 12 HTML Stitch en composants React
+               [1/12 - LandingSplashScreen]
  
   ⬜ Phase 4  — Supabase Setup
                Créer projet Supabase, tables, types TypeScript générés
