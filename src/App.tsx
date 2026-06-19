@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import LandingSplashScreen from './pages/LandingSplashScreen';
 import MenuBrowser from './pages/MenuBrowser';
@@ -14,7 +14,7 @@ import TableQrManagement from './pages/TableQrManagement';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Landing — design plein écran, pas de layout commun */}
         <Route path="/" element={<LandingSplashScreen />} />
@@ -35,7 +35,7 @@ function App() {
         <Route path="/menu-management" element={<MenuManagement />} />
         <Route path="/tables" element={<TableQrManagement />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

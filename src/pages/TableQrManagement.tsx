@@ -35,7 +35,6 @@ export default function TableQrManagement() {
   const [selected, setSelected] = useState<string>('01');
 
   const selectedTable = tables.find(t => t.id === selected)!;
-  const cfg = statusConfig[selectedTable.status];
 
   return (
     <div className="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
