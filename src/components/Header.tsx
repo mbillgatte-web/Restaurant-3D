@@ -1,23 +1,24 @@
-import { Link, useLocation } from 'react-router-dom';
-import './Header.css';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Header = () => {
-  const location = useLocation();
+export default function Header() {
+  const navigate = useNavigate();
 
   return (
-    <header className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="logo">
-          RESTO<span>3D</span>
+    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-outline-variant/20">
+      <div className="max-w-2xl mx-auto px-container-margin py-4 flex justify-between items-center">
+        <Link to="/menu" className="no-underline">
+          <h1 className="font-headline-md text-headline-sm text-primary italic tracking-tighter">
+            L'ÉLITE
+          </h1>
         </Link>
-        <nav className="nav-links">
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Accueil</Link>
-          <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''}>Le Menu</Link>
-          <Link to="/reservation" className="btn-reserver">Réserver</Link>
-        </nav>
+
+        <button
+          onClick={() => navigate('/cart')}
+          className="relative text-primary hover:scale-110 transition-transform"
+        >
+          <span className="material-symbols-outlined text-3xl">shopping_cart</span>
+        </button>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

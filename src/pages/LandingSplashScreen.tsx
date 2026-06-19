@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingSplashScreen() {
   const [activeLang, setActiveLang] = useState('FR');
   const languages = ['FR', 'EN', 'AR'];
+  const navigate = useNavigate();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -51,8 +53,9 @@ export default function LandingSplashScreen() {
 
         {/* CTA Section */}
         <div className="animate-fade-in-up animate-delay-400 w-full">
-          <button 
+          <button
             onMouseMove={handleMouseMove}
+            onClick={() => navigate('/menu')}
             className="group w-full py-5 px-8 rounded-lg bg-gradient-to-r from-primary to-primary-fixed-dim text-on-primary font-label-md text-label-md uppercase tracking-[0.2em] shadow-xl hover:shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3"
           >
             <span>Voir le menu</span>
