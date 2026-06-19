@@ -8,6 +8,7 @@
 @layer base {
   body {
     min-height: max(884px, 100dvh);
+    overflow-x: hidden;
     @apply bg-background text-on-background font-body-md text-body-md;
   }
 }

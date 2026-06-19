@@ -6,8 +6,8 @@ export default function Layout() {
       {/* Grain Overlay */}
       <div className="fixed inset-0 grain-overlay z-0"></div>
 
-      {/* Background Atmospheric Glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+      {/* Background Atmospheric Glow — taille réduite sur mobile pour éviter le débordement */}
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none overflow-hidden"></div>
 
       {/* Page Content */}
       <div className="relative z-10">

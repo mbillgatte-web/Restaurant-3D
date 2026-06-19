@@ -42,7 +42,7 @@ export default function MenuBrowser() {
       <main className="pt-0 pb-32">
         {/* Barre de catégories horizontale */}
         <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur-md py-4 border-b border-outline-variant/30">
-          <div className="flex overflow-x-auto hide-scrollbar px-container-margin gap-8 items-center">
+          <div className="flex overflow-x-auto hide-scrollbar px-container-margin gap-8 items-center max-w-2xl mx-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -60,7 +60,7 @@ export default function MenuBrowser() {
         </nav>
 
         {/* Liste des plats */}
-        <section className="px-container-margin mt-8 grid grid-cols-1 gap-12">
+        <section className="px-container-margin mt-8 grid grid-cols-1 gap-12 max-w-2xl mx-auto">
           {dishes.map((dish) => (
             <article
               key={dish.id}
@@ -118,7 +118,7 @@ export default function MenuBrowser() {
       </main>
 
       {/* Barre flottante du panier en bas */}
-      <div className="fixed bottom-6 left-6 right-6 z-50">
+      <div className="fixed bottom-6 left-6 right-6 z-50 max-w-2xl mx-auto">
         <button
           onClick={() => navigate('/cart')}
           className="w-full h-16 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-between px-6 shadow-[0_-4px_24px_rgba(0,0,0,0.6)] transition-all active:scale-[0.98]"

@@ -20,7 +20,7 @@ export default function LandingSplashScreen() {
       <div className="fixed inset-0 grain-overlay z-0"></div>
       
       {/* Background Atmospheric Glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none overflow-hidden"></div>
       
       <main className="relative z-10 w-full max-w-md px-container-margin flex flex-col items-center text-center mx-auto min-h-screen justify-center pb-24">
         {/* Logo Section */}
