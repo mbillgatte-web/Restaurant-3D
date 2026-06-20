@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import LandingSplashScreen from './pages/LandingSplashScreen';
 import MenuBrowser from './pages/MenuBrowser';
@@ -7,6 +9,7 @@ import Dish from './pages/Dish';
 import CartConfirmation from './pages/CartConfirmation';
 import OrderTracking from './pages/OrderTracking';
 import OrderReady from './pages/OrderReady';
+import Login from './pages/Login';
 import ServerMobile from './pages/ServerMobile';
 import KitchenDisplay from './pages/KitchenDisplay';
 import ManagerDashboard from './pages/ManagerDashboard';
@@ -15,13 +18,14 @@ import TableQrManagement from './pages/TableQrManagement';
 
 function App() {
   return (
+    <AuthProvider>
     <CartProvider>
     <HashRouter>
       <Routes>
-        {/* Landing — design plein écran, pas de layout commun */}
+        {/* Landing — design plein écran */}
         <Route path="/" element={<LandingSplashScreen />} />
 
-        {/* Parcours client — avec grain overlay et glow */}
+        {/* Parcours client — accès libre (via QR code) */}
         <Route element={<Layout />}>
           <Route path="/menu" element={<MenuBrowser />} />
           <Route path="/dish/:id" element={<Dish />} />
@@ -30,15 +34,43 @@ function App() {
           <Route path="/ready" element={<OrderReady />} />
         </Route>
 
-        {/* Back-office — interfaces autonomes (pas de Layout commun) */}
-        <Route path="/server" element={<ServerMobile />} />
-        <Route path="/kitchen" element={<KitchenDisplay />} />
-        <Route path="/dashboard" element={<ManagerDashboard />} />
-        <Route path="/menu-management" element={<MenuManagement />} />
-        <Route path="/tables" element={<TableQrManagement />} />
+        {/* Login staff */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Serveur — protégé */}
+        <Route path="/server" element={
+          <ProtectedRoute allowedRoles={['serveur', 'manager']}>
+            <ServerMobile />
+          </ProtectedRoute>
+        } />
+
+        {/* Cuisine — protégé */}
+        <Route path="/kitchen" element={
+          <ProtectedRoute allowedRoles={['cuisinier', 'manager']}>
+            <KitchenDisplay />
+          </ProtectedRoute>
+        } />
+
+        {/* Manager — protégé */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute allowedRoles={['manager']}>
+            <ManagerDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/menu-management" element={
+          <ProtectedRoute allowedRoles={['manager']}>
+            <MenuManagement />
+          </ProtectedRoute>
+        } />
+        <Route path="/tables" element={
+          <ProtectedRoute allowedRoles={['manager']}>
+            <TableQrManagement />
+          </ProtectedRoute>
+        } />
       </Routes>
     </HashRouter>
     </CartProvider>
+    </AuthProvider>
   );
 }
 
