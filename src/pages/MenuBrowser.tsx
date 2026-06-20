@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { useCart } from '../context/CartContext';
 
 const categories = ['Entrées', 'Plats', 'Desserts', 'Boissons'];
 
@@ -129,6 +130,7 @@ const dishes = [
 export default function MenuBrowser() {
   const [activeCategory, setActiveCategory] = useState('Entrées');
   const navigate = useNavigate();
+  const { addItem, totalItems, totalPrice } = useCart();
 
   const filtered = dishes.filter(d => d.category === activeCategory);
 
@@ -212,6 +214,13 @@ export default function MenuBrowser() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
+                    addItem({
+                      id: dish.id,
+                      name: dish.name,
+                      price: parseFloat(dish.price.replace(',', '.').replace(/[^0-9.]/g, '')),
+                      image: dish.image,
+                      subtitle: dish.description,
+                    });
                   }}
                   className="bg-primary text-on-primary w-11 h-11 rounded-lg flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-lg flex-shrink-0"
                 >
@@ -223,30 +232,32 @@ export default function MenuBrowser() {
         </section>
       </main>
 
-      {/* Barre flottante du panier en bas */}
-      <div className="fixed bottom-6 left-6 right-6 z-50 max-w-4xl mx-auto">
-        <button
-          onClick={() => navigate('/cart')}
-          className="w-full h-16 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-between px-6 shadow-[0_-4px_24px_rgba(0,0,0,0.6)] transition-all active:scale-[0.98]"
-        >
-          <div className="flex items-center gap-4">
-            <div className="bg-on-secondary-container/20 p-2 rounded-lg">
-              <span className="material-symbols-outlined text-on-secondary-container">
-                shopping_bag
-              </span>
+      {/* Barre flottante du panier en bas — visible seulement si le panier contient des articles */}
+      {totalItems > 0 && (
+        <div className="fixed bottom-6 left-6 right-6 z-50 max-w-4xl mx-auto animate-fade-in-up">
+          <button
+            onClick={() => navigate('/cart')}
+            className="w-full h-16 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-between px-6 shadow-[0_-4px_24px_rgba(0,0,0,0.6)] transition-all active:scale-[0.98]"
+          >
+            <div className="flex items-center gap-4">
+              <div className="bg-on-secondary-container/20 p-2 rounded-lg">
+                <span className="material-symbols-outlined text-on-secondary-container">
+                  shopping_bag
+                </span>
+              </div>
+              <div className="text-left">
+                <p className="font-label-md text-label-md uppercase opacity-70">
+                  {totalItems} {totalItems > 1 ? 'Articles' : 'Article'}
+                </p>
+                <p className="font-headline-sm text-on-secondary-container text-lg">
+                  Voir le panier
+                </p>
+              </div>
             </div>
-            <div className="text-left">
-              <p className="font-label-md text-label-md uppercase opacity-70">
-                2 Articles
-              </p>
-              <p className="font-headline-sm text-on-secondary-container text-lg">
-                Voir le panier
-              </p>
-            </div>
-          </div>
-          <div className="font-price-lg text-price-lg">62,00 €</div>
-        </button>
-      </div>
+            <div className="font-price-lg text-price-lg">{totalPrice.toFixed(2)} €</div>
+          </button>
+        </div>
+      )}
     </>
   );
 }

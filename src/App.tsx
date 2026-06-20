@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Layout from './components/Layout';
 import LandingSplashScreen from './pages/LandingSplashScreen';
 import MenuBrowser from './pages/MenuBrowser';
@@ -14,6 +15,7 @@ import TableQrManagement from './pages/TableQrManagement';
 
 function App() {
   return (
+    <CartProvider>
     <HashRouter>
       <Routes>
         {/* Landing — design plein écran, pas de layout commun */}
@@ -36,6 +38,7 @@ function App() {
         <Route path="/tables" element={<TableQrManagement />} />
       </Routes>
     </HashRouter>
+    </CartProvider>
   );
 }
 
