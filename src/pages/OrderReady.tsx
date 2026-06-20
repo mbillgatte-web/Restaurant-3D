@@ -10,7 +10,7 @@ const dishes = [
     energy: 640,
     energyPct: 75,
     nutrients: ['PROTÉINES 42G', 'GLUCIDES 8G', 'LIPIDES 52G'],
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLvZWPomMFaC6SfI4bHHfcrNCwrgS269n7XmVIBpeAP4vQtwfchOaEJGNzuH-iTBlIqb9nukEuYA2pIv7ZLGuKzJHfoUAhLLAVHAmsTEf5Ag_MjtmFI51R52EZmdh3z7D5-EfXiTYSNgIk95TghtVHNuqmrYMg8LDTBtFL34cT0Q1lx3q_3Du4i7-h6lnrkmyX-4_1yPrCGBMZ2fBnbC2tu4WOVfxs_IlRzZh2J5XBB8DspY_6_hcsarvlA',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const dishes = [
     energy: 480,
     energyPct: 55,
     nutrients: ['PROTÉINES 28G', 'GLUCIDES 34G', 'LIPIDES 22G'],
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLtFEGZzChSqIukTzT6S47F_ujDcifYYRllSdamHvF5yHyBUNG-baVSRjLTZ2PvFn7woV8uM7cAxQJVG-AHpGVfJf3ieTDH-oMoYIimvuEo4o8YtcSHklUv3Lef_a7RyB-mCG-MbdCxZPWG16DGntjTuteBJxtub2WjTW1ntwHyJWWqGqW8JcZXgoTz5zDAEiVuRQfatXZfkS6MJOvors0As4b4xYu14DixdEIZ7DMn_BUl5-xFe42ODOEk',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop',
   },
 ];
 

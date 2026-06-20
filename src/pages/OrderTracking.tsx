@@ -28,7 +28,7 @@ export default function OrderTracking() {
               <img
                 alt="Cooking Animation Plate"
                 className="w-full h-full object-cover rounded-full border-2 border-primary/30 shadow-2xl opacity-80"
-                src="https://lh3.googleusercontent.com/aida/AP1WRLs6l_kKdZS3Xj9qLAEH9MVSr7TGPm149AJmVWfYEXIyyz4oaH9NxeK32lyaIHAuErf4zKkuxTLhDpSFsowJN88nuoMIRtQOkq-T79SJtogHULRzL-2tDoGpAiIGYSmCw0P9rNyzwdfmvOLayCI8jQ_ZVV0yYs44Nw42WjDy316PT2OjAMmoFodCMixkoC4lzZ8B0vrQ1DJXC7xXfAskUUMzRAXVxD7cHTxbmIo83dN4zK2tQkpBXelC35M"
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=400&fit=crop"
               />
               <div className="absolute -top-4 -left-4 w-12 h-12 border border-primary rounded-full animate-ping opacity-20" />
               <div className="absolute -bottom-8 -right-4 w-16 h-16 border border-secondary rounded-full animate-bounce opacity-10" />
@@ -39,7 +39,7 @@ export default function OrderTracking() {
 
         {/* Statut & Tracking */}
         <section className="flex-1 px-container-margin -mt-12 relative z-10 pb-32">
-          <div className="max-w-2xl mx-auto space-y-12">
+          <div className="max-w-4xl mx-auto space-y-12">
             {/* Temps estimé */}
             <div className="text-center space-y-4">
               <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg text-primary">

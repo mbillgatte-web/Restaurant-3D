@@ -10,7 +10,7 @@ const dishes = [
     name: 'Noix de Saint-Jacques',
     description: 'Émulsion au safran, tuile de corail et jeunes pousses croquantes.',
     price: '28,00 €',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLto9sFi5U0-GbeqbNwJWv6pbMpGBWfN1QNEyqnkq2gvwOFqh-iNweDE0uA-V-3sU7V3WBsq_vjeo10aBoGZLSFOGlciJwqOGI_7AZbAZmG_tmwKP6-Tmr3ftsQUNwNbE7bNpVVFoSaJduB7ye5q8GIePVMBJUvGcgzjkgpJO0WJ4cK37bYwhDspFv1r5iL6lvRMelSaCKPhLc3JPNM5A-srnHttvofaDMP5HtRwE_BqkyvtFCNVgtUhdw',
+    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=400&fit=crop',
     has3d: true,
   },
   {
@@ -18,7 +18,7 @@ const dishes = [
     name: 'Tartare de Bœuf fumé',
     description: "Préparé au couteau, fumage minute au bois de hêtre et jaune d'œuf confit.",
     price: '34,00 €',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLttSRDBKu1FFVGBgbD0JZmgPlb0cajenEg3ZiiMF-7_dnOhpUrnYKXOzxBXvPDN4xGBDHCHGZ3vx3asG7NLhyTgqWKMr0KdjiokcRrzYZi3ED28RVCkA97f0wtDs5npIGvHZF-9-L0BKUJkndFWeBsdhR5beT4S2sDC2LSJMWSWOLCmk_H5_nhgFmdN__iGlYztvf0yftSoRC5Htx6fNObYKleK-8nymrh82lpKh6q-3bzFRFmJ3GPxe5c',
+    image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=600&h=400&fit=crop',
     has3d: true,
   },
   {
@@ -26,7 +26,7 @@ const dishes = [
     name: 'Élixir de Nuit',
     description: 'Gin artisanal, liqueur de violette, or 24 carats et essence de jasmin.',
     price: '22,00 €',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLv3n53FIi_Mx8R9dp7x6k3HfkHj667Ru_zEQMEIbL4q1bB1vKytSY6wxrPT5NKyG3mirRKZOT-bI39B4vaK8-mw4I3mjzi4oWnv_dNKxerdTvoW81m_IG87jzanoJeZzBCXcrnFhAPNTNEObcp4L3tCLeh_Xin94ck65X-pqVhPbhcUl4ZEvY_4tFD5dVJqqPfBkPNf-05fBmqzR1bh1UvHvNkD8NcX-MTLUbh0_jdvV_hZ0IB1fl9MWfM',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=400&fit=crop',
     has3d: false,
   },
 ];
@@ -42,7 +42,7 @@ export default function MenuBrowser() {
       <main className="pt-0 pb-32">
         {/* Barre de catégories horizontale */}
         <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur-md py-4 border-b border-outline-variant/30">
-          <div className="flex overflow-x-auto hide-scrollbar px-container-margin gap-8 items-center max-w-2xl mx-auto">
+          <div className="flex overflow-x-auto hide-scrollbar px-container-margin gap-8 items-center max-w-4xl mx-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -60,7 +60,7 @@ export default function MenuBrowser() {
         </nav>
 
         {/* Liste des plats */}
-        <section className="px-container-margin mt-8 grid grid-cols-1 gap-12 max-w-2xl mx-auto">
+        <section className="px-container-margin mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {dishes.map((dish) => (
             <article
               key={dish.id}
@@ -118,7 +118,7 @@ export default function MenuBrowser() {
       </main>
 
       {/* Barre flottante du panier en bas */}
-      <div className="fixed bottom-6 left-6 right-6 z-50 max-w-2xl mx-auto">
+      <div className="fixed bottom-6 left-6 right-6 z-50 max-w-4xl mx-auto">
         <button
           onClick={() => navigate('/cart')}
           className="w-full h-16 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-between px-6 shadow-[0_-4px_24px_rgba(0,0,0,0.6)] transition-all active:scale-[0.98]"

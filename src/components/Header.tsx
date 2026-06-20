@@ -5,7 +5,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-outline-variant/20">
-      <div className="max-w-2xl mx-auto px-container-margin py-4 flex justify-between items-center">
+      <div className="max-w-4xl mx-auto px-container-margin py-4 flex justify-between items-center">
         <Link to="/menu" className="no-underline">
           <h1 className="font-headline-md text-headline-sm text-primary italic tracking-tighter">
             L'ÉLITE

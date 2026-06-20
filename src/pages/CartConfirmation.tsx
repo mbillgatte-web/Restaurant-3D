@@ -9,7 +9,7 @@ const initialItems = [
     subtitle: 'Truffe noire, pâte feuilletée maison',
     price: 68,
     qty: 1,
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLu3FiQ9M-5nakA5QmcZxe7okq8T0gJrHL7-Z8zATxkHkSXNsf92lzNaOTWV3N_e2uNruxn1yogBYSpNmvuzHSM9q1raaVgEcBy0BON7JRxEgj_0J3Mqh6vowi1VnxAM-uTDQtGeL6arfAIxWHfT0asW9LOvVHY2sbtv2YUUB9lalfC-4B76kjtUud3lyGEykl5ykqEfFkD1LP4jGKjzzzFzVX9L-lRvRkI03Dy3avH-JYbHIUr7pqyPnsE',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=200&h=200&fit=crop',
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const initialItems = [
     subtitle: 'Cuvée de Prestige 2012',
     price: 245,
     qty: 1,
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLviKMkk4t_l86UlI4lMlfROcgyRYUZ9N1xDfCHGz-EWQzU_8otQHn-briVzwiXoJZww2lhPE52YG-7Frvah2hyERcVIH1H9T5OT45byXlpThD5yv3LQ2u-5lmDPQwQ03nRFuE1gnfEQTLoPDVQVgy1CXcU0kLDdvDTcSvu-A4njqTKR4bbjLCh4d4qXsXzSm6tygFVSOWZvnemRIWYsIdGmO7ldLI6yW6hKcEjuk-6sqD9NE5v_byzi1w',
+    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=200&h=200&fit=crop',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const initialItems = [
     subtitle: 'Grand Cru, glace vanille Bourbon',
     price: 22,
     qty: 2,
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLvrZaXo-RldTyR0FAMByLNQB09h1iylSzwZFVSt55DDZC4zOswargzSTWMuCe7NGmbugL53CIkMm96Prme9exftG5KllPQIOzBMTXU-CqPRAKeheCL8TmT5nS6omGnBG6RtDqlZqsvs2pzUWV7kWZUvg5NqB5VfdqZvNYf_Ti4-x-Ubxg_QeIbC1B5-cDOjbTw3GzQwOIVeNfX6Y8PoqhG9Ik_lBreEe8mcm9tCo4ZaAwlPm3bpgZCl3NY',
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=200&h=200&fit=crop',
   },
 ];
 
@@ -50,7 +50,7 @@ export default function CartConfirmation() {
     <>
       <Header />
 
-      <main className="pt-8 pb-32 px-container-margin max-w-2xl mx-auto">
+      <main className="pt-8 pb-32 px-container-margin max-w-4xl mx-auto">
         {/* Titre */}
         <div className="mb-12">
           <h2 className="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">

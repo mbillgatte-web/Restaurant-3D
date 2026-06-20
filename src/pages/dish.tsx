@@ -81,7 +81,7 @@ export default function Dish() {
                             <img 
                                 className="h-full w-full object-cover mix-blend-lighten scale-110 hover:scale-125 transition-transform duration-700 ease-out" 
                                 alt="Canard à l'orange 3D rendering" 
-                                src="https://lh3.googleusercontent.com/aida/AP1WRLtoxtpCWX4cXzVKlCTyFbUq11XYLhOdOnFnokHJJ7SJxuCcd4eGo6Qt4wCftMInrBzy_xDfuk8-oGKhZi-Cdc74E4yYPzhwOQyxM4V-O0aprqHVQv_mOVpCvt9kXErz8AmcZooimSowEx4Ko5PKMqouO1DOCoSWiqLvXiwoV2OU4d_4NTAUzH6X3_0iwBw6BAhfrGgduV9H1TXZyoQUBMcbbHg_CFcN7DZ6It9U1ozdJsfDoYuaSrXu98A"
+                                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop"
                             />
                             {/* Interaction Indicator */}
                             <div className="absolute bottom-4 right-6 flex items-center gap-2 bg-black/40 backdrop-blur px-3 py-1.5 rounded-full border border-outline-variant/30">

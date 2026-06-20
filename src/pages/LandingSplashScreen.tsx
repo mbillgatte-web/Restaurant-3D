@@ -67,7 +67,7 @@ export default function LandingSplashScreen() {
         <div className="sr-only">
           <img 
             alt="A cinematic, low-angle photograph of a prestigious Michelin-starred restaurant interior at night..." 
-            src="https://lh3.googleusercontent.com/aida/AP1WRLvHUUDP_xSuzYUOgVu06nQIeILuuc78VBUYWCvYcqYPcKKxnB9uFG7iE-tkSvCs3FHXaRsuK-l-d-bS7dycEbc2aK-56P6W1y0xlm0H08fp6wjoSIc2PeHrYNkEypTtHH2exfOplTMSOdMjmIoJpJejiqgfGVzPbbs7OlFwH-YL-BNX0oK3eZhlnFNH_qP4LvARcDVoEPxIJ2Q40UvCWfiiOC-1qNbD0k0wNWNrSYwDM1T_XTSGJyHLWoE" 
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" 
           />
         </div>
       </main>
