@@ -76,18 +76,28 @@ export default function LandingSplashScreen() {
       <footer className="fixed bottom-12 left-0 w-full z-10 animate-fade-in-up animate-delay-600">
         <div className="flex justify-center items-center space-x-8">
           {languages.map((lang) => (
-            <button 
+            <button
               key={lang}
               onClick={() => setActiveLang(lang)}
               className={`font-label-md text-label-md-mobile pb-1 transition-colors ${
-                activeLang === lang 
-                  ? 'text-primary border-b border-primary' 
+                activeLang === lang
+                  ? 'text-primary border-b border-primary'
                   : 'text-on-surface-variant hover:text-primary'
               }`}
             >
               {lang}
             </button>
           ))}
+        </div>
+        {/* Lien discret vers l'espace staff */}
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={() => navigate('/login')}
+            className="text-on-surface-variant/40 hover:text-primary text-xs font-label-md transition-colors flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-sm">lock</span>
+            Espace personnel
+          </button>
         </div>
       </footer>
     </>
