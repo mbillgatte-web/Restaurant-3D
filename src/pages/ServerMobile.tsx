@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOrders } from '../context/OrderContext';
 import { useAuth } from '../context/AuthContext';
-import Header from '../components/Header';
 
 type TabKey = 'a-servir' | 'toutes';
 
@@ -15,7 +14,7 @@ function timeSince(ts: number) {
 
 export default function ServerMobile() {
   const [activeTab, setActiveTab] = useState<TabKey>('a-servir');
-  const { orders, updateStatus, getOrdersByStatus } = useOrders();
+  const { updateStatus, getOrdersByStatus } = useOrders();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
