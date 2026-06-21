@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import StaffNav from '../components/StaffNav';
 
 const stats = [
   { label: 'Total Plats', value: '42', icon: 'restaurant', color: 'text-outline-variant' },
@@ -21,8 +22,9 @@ export default function MenuManagement() {
 
   return (
     <div className="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
+      <StaffNav />
       {/* Header */}
-      <header className="fixed top-0 right-0 left-0 z-30 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm">
+      <header className="fixed top-0 right-0 left-0 lg:left-64 z-30 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm">
         <h1 className="font-headline-sm text-headline-sm text-on-surface">Gestion Menu</h1>
         <div className="flex items-center gap-6">
           <button
@@ -36,7 +38,7 @@ export default function MenuManagement() {
       </header>
 
       {/* Contenu principal */}
-      <div className="mt-16 p-container-margin overflow-auto h-[calc(100vh-64px)]" style={{ scrollbarWidth: 'thin', scrollbarColor: '#4d4637 #121411' }}>
+      <div className="mt-16 lg:ml-64 p-container-margin overflow-auto h-[calc(100vh-64px)]" style={{ scrollbarWidth: 'thin', scrollbarColor: '#4d4637 #121411' }}>
         <div className="max-w-7xl mx-auto space-y-6 pb-24">
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">

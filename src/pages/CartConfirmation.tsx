@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { useCart } from '../context/CartContext';
+import { useOrders } from '../context/OrderContext';
 
 export default function CartConfirmation() {
   const { items, updateQty, totalPrice, clearCart, totalItems } = useCart();
+  const { createOrder } = useOrders();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
 
@@ -118,7 +120,14 @@ export default function CartConfirmation() {
                 </span>
               </div>
               <button
-                onClick={() => setShowConfirmation(true)}
+                onClick={() => {
+                  createOrder(
+                    'Table 7',
+                    items.map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+                    total
+                  );
+                  setShowConfirmation(true);
+                }}
                 className="w-full sm:w-auto px-8 py-4 rounded-lg font-label-md bg-gradient-to-r from-secondary-container to-primary text-on-primary-fixed font-bold tracking-widest hover:shadow-[0_0_20px_rgba(230,195,100,0.4)] transition-all duration-300 active:scale-95 uppercase"
               >
                 Commander maintenant

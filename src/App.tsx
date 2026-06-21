@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+import { OrderProvider } from './context/OrderContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import LandingSplashScreen from './pages/LandingSplashScreen';
@@ -19,6 +20,7 @@ import TableQrManagement from './pages/TableQrManagement';
 function App() {
   return (
     <AuthProvider>
+    <OrderProvider>
     <CartProvider>
     <HashRouter>
       <Routes>
@@ -70,6 +72,7 @@ function App() {
       </Routes>
     </HashRouter>
     </CartProvider>
+    </OrderProvider>
     </AuthProvider>
   );
 }

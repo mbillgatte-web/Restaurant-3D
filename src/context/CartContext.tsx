@@ -22,7 +22,18 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItemsRaw] = useState<CartItem[]>(() => {
+    const saved = localStorage.getItem('elite_cart');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const setItems = (updater: CartItem[] | ((prev: CartItem[]) => CartItem[])) => {
+    setItemsRaw(prev => {
+      const next = typeof updater === 'function' ? updater(prev) : updater;
+      localStorage.setItem('elite_cart', JSON.stringify(next));
+      return next;
+    });
+  };
 
   const addItem = (item: Omit<CartItem, 'qty'>) => {
     setItems(prev => {
@@ -46,7 +57,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const clearCart = () => setItems([]);
+  const clearCart = () => { setItemsRaw([]); localStorage.removeItem('elite_cart'); };
 
   const totalItems = items.reduce((sum, i) => sum + i.qty, 0);
   const totalPrice = items.reduce((sum, i) => sum + i.price * i.qty, 0);

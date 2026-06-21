@@ -1,17 +1,25 @@
 import { useState, useEffect } from 'react';
+import { useOrders } from '../context/OrderContext';
+import StaffNav from '../components/StaffNav';
 
-const kpis = [
-  { label: 'Commandes', value: '142', change: '+12%', icon: 'restaurant', spark: 'M0,15 Q25,5 50,12 T100,2' },
-  { label: 'Chiffre Affaires', value: '18.4k', change: '€', icon: 'payments', spark: 'M0,18 Q30,10 40,15 T70,5 T100,10' },
-  { label: 'Tables Occupées', value: '32/45', change: '84%', icon: 'table_restaurant', bar: 84 },
-  { label: 'Temps Moyen', value: '78', change: 'min', icon: 'timer', spark: 'M0,5 Q20,15 40,10 T80,18 T100,8' },
-];
+function buildKpis(totalOrders: number, totalRevenue: number) {
+  return [
+    { label: 'Commandes', value: totalOrders.toString(), change: 'total', icon: 'restaurant', spark: 'M0,15 Q25,5 50,12 T100,2' },
+    { label: 'Chiffre Affaires', value: totalRevenue > 1000 ? `${(totalRevenue / 1000).toFixed(1)}k` : totalRevenue.toFixed(0), change: '€', icon: 'payments', spark: 'M0,18 Q30,10 40,15 T70,5 T100,10' },
+    { label: 'Tables Occupées', value: `${Math.min(totalOrders, 45)}/45`, change: `${Math.min(Math.round((totalOrders / 45) * 100), 100)}%`, icon: 'table_restaurant', bar: Math.min(Math.round((totalOrders / 45) * 100), 100) },
+    { label: 'Temps Moyen', value: totalOrders > 0 ? '12' : '0', change: 'min', icon: 'timer', spark: 'M0,5 Q20,15 40,10 T80,18 T100,8' },
+  ];
+}
 
-const orders = [
-  { table: 'T-04', client: 'M. Lambert', status: 'Préparation', statusStyle: 'bg-secondary-container text-on-secondary-container', time: '14m', amount: '245.00€' },
-  { table: 'T-12', client: 'Mme. Dubois', status: 'Servi', statusStyle: 'bg-primary/20 text-primary border border-primary/50', time: '42m', amount: '890.00€' },
-  { table: 'V-01', client: 'Salon VIP', status: 'Urgent', statusStyle: 'bg-on-secondary-fixed-variant text-white', time: '08m', amount: '1,420.00€' },
-];
+const statusStyles: Record<string, string> = {
+  'nouvelle': 'bg-primary/20 text-primary border border-primary/50',
+  'en-cours': 'bg-secondary-container text-on-secondary-container',
+  'prete': 'bg-on-secondary-fixed-variant text-white',
+  'servie': 'bg-surface-variant text-on-surface-variant',
+};
+const statusLabels: Record<string, string> = {
+  'nouvelle': 'Nouvelle', 'en-cours': 'Préparation', 'prete': 'Prête', 'servie': 'Servie',
+};
 
 export default function ManagerDashboard() {
   const [time, setTime] = useState('');
@@ -23,10 +31,15 @@ export default function ManagerDashboard() {
     return () => clearInterval(id);
   }, []);
 
+  const { orders: realOrders } = useOrders();
+  const totalOrders = realOrders.length;
+  const totalRevenue = realOrders.reduce((s, o) => s + o.total, 0);
+
   return (
     <div className="bg-background text-on-background min-h-screen overflow-auto">
+      <StaffNav />
       {/* Header */}
-      <header className="sticky top-0 z-40 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm backdrop-blur-md">
+      <header className="sticky top-0 z-40 lg:ml-64 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm backdrop-blur-md">
         <div className="flex items-center gap-4">
           <span className="font-headline-md text-headline-sm text-primary italic tracking-tighter">L'ÉLITE</span>
           <span className="text-outline-variant mx-2 hidden md:inline">•</span>
@@ -39,10 +52,10 @@ export default function ManagerDashboard() {
         </div>
       </header>
 
-      <div className="p-container-margin md:p-10 space-y-10">
+      <div className="lg:ml-64 p-container-margin md:p-10 space-y-10">
         {/* KPI Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {kpis.map(kpi => (
+          {buildKpis(totalOrders, totalRevenue).map(kpi => (
             <div key={kpi.label} className="bg-surface-container-low border border-outline-variant p-6 rounded-xl hover:border-primary/50 transition-all group">
               <div className="flex justify-between items-start mb-4">
                 <span className="text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">{kpi.label}</span>
@@ -154,15 +167,17 @@ export default function ManagerDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-outline-variant/30">
-                {orders.map(o => (
-                  <tr key={o.table} className="hover:bg-primary/5 transition-colors">
+                {realOrders.length === 0 ? (
+                  <tr><td colSpan={6} className="px-8 py-12 text-center text-on-surface-variant">Aucune commande pour le moment</td></tr>
+                ) : realOrders.slice(-10).reverse().map(o => (
+                  <tr key={o.id} className="hover:bg-primary/5 transition-colors">
                     <td className="px-8 py-5 font-price-md text-price-md text-primary">{o.table}</td>
-                    <td className="px-8 py-5 font-body-md">{o.client}</td>
+                    <td className="px-8 py-5 font-body-md">#{o.id.slice(-4)}</td>
                     <td className="px-8 py-5">
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase ${o.statusStyle}`}>{o.status}</span>
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase ${statusStyles[o.status] || ''}`}>{statusLabels[o.status]}</span>
                     </td>
-                    <td className="px-8 py-5 font-label-md text-label-md text-on-surface-variant">{o.time}</td>
-                    <td className="px-8 py-5 font-price-md text-price-md">{o.amount}</td>
+                    <td className="px-8 py-5 font-label-md text-label-md text-on-surface-variant">{Math.floor((Date.now() - o.createdAt) / 60000)}m</td>
+                    <td className="px-8 py-5 font-price-md text-price-md">{o.total.toFixed(2)}€</td>
                     <td className="px-8 py-5 text-right">
                       <button className="material-symbols-outlined text-on-surface-variant hover:text-primary p-2">more_vert</button>
                     </td>

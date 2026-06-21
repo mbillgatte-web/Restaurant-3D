@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import StaffNav from '../components/StaffNav';
 
 type TableStatus = 'Occupée' | 'Disponible' | 'En Nettoyage';
 
@@ -38,13 +39,14 @@ export default function TableQrManagement() {
 
   return (
     <div className="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
+      <StaffNav />
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm">
+      <header className="fixed top-0 w-full lg:left-64 z-50 flex justify-between items-center px-container-margin h-16 bg-background border-b border-outline-variant shadow-sm">
         <span className="font-headline-md text-headline-sm text-primary tracking-tighter italic">L'ÉLITE</span>
         <button className="material-symbols-outlined text-primary">shopping_cart</button>
       </header>
 
-      <main className="mt-16 p-6 lg:p-10 h-[calc(100vh-64px)] overflow-hidden flex flex-col">
+      <main className="mt-16 lg:ml-64 p-6 lg:p-10 h-[calc(100vh-64px)] overflow-hidden flex flex-col">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
           <div>
             <h1 className="font-headline-md text-headline-sm lg:text-headline-md text-on-surface">Plan de Salle & QR Codes</h1>
